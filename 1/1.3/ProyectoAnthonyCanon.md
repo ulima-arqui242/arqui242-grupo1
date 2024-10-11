@@ -6,7 +6,15 @@ como la traducción, el análisis de texto, la generación de preguntas y respue
 
 # herramientas utilizadas
 
-## Librerias
+## Requerimientos
+### Docker
+
+### Pip
+```
+pip install streamlit
+pip install python-dotenv
+
+```
 
 ## Modelos
 
