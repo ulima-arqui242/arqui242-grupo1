@@ -17,7 +17,7 @@
 #### Trabajando como ing de software o similar
 
 
-## Tema individual: LLMs (Modelos de lenguaje a gran escala)
+# Tema individual: LLMs (Modelos de lenguaje a gran escala)
 
 # Marco Teorico
 Los modelos de lenguaje a gran escala estan basados en la arquitectura de Transformers, estan 
@@ -28,20 +28,24 @@ como la traducción, el análisis de texto, la generación de preguntas y respue
 # herramientas utilizadas
 
 ## Requerimientos
-### Docker
 
 ### Pip
 ```
 pip install streamlit
 pip install python-dotenv
-
+pip install google-generativeai
 ```
 
 ## Modelos
+- GPT (Generative Pretrained Transformer)
+- Gemini
+- BERT
+### Proceso de refinamiento
+1. Generar un dataset que ya esta limpiado y contiene información relevante para lograr refinar el modelo 
+2. Para la creación de chatbots podemos seleccionar modelos generativos como GPT o Gemini, modelos como BERT y XLNET son comunmente usados en tareas de clasificación y regresión.
+3. 
 
 ## Dataset
-
-## Ciclo de entrenamiento
 
 # Demo
 
