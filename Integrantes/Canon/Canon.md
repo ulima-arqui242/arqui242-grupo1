@@ -16,3 +16,5 @@
 ## Como me veo en 10 años
 #### Trabajando como ing de software o similar
 
+
+## Tema individual: LLMs (Modelos de lenguaje a gran escala)
