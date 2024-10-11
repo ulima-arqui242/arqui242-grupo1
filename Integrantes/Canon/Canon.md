@@ -33,7 +33,14 @@ Ejemplo de secuencia de incrustaciones que representa una oración:
 ### Refinamiento
 Se refiere al proceso de mejorar el rendimiento del modelo usando datos especificos, después de su entrenamiento inicial que usualmente es realizado con un gran cuerpo de datos generales de internet. Este proceso puede implicar ajustes en el modelo, en los datos de entrenamiento o en los hiperparámetros, con el objetivo de optimizar la capacidad del modelo para generalizar bien sobre datos no vistos anteriomente y reducir errores. El refinamiento es una etapa crítica para obtener un modelo que realiza la tarea de manera optima y hace predicciones robustas.
 Ejemplo de opciones que  se pueden ajustar para tener mejor modelo:
-
+```
+# Hiperparametros
+learning_rate = 0.001
+batch_size = 32
+epochs = 50
+momentum = 0.9
+dropout_rate = 0.5
+```
 
 ### Entradas/Salidas
 Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté realizando. Los modelos están diseñados para crear contenido nuevo en base de los datos de entrada que reciben, por lo tanto un modelo que  recibe datos de baja calidad, pocos datos o inexactos, tendra como consecuencia un modelo que no cumple con las expectativas. A continuación se describen las entradas y salidas más comunes en modelos generativos, especialmente aquellos que se utilizan para la generación de texto, como GPT.
