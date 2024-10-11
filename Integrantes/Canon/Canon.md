@@ -43,7 +43,10 @@ dropout_rate = 0.5
 ```
 
 ### Entradas/Salidas
-Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté realizando. Los modelos están diseñados para crear contenido nuevo en base de los datos de entrada que reciben, por lo tanto un modelo que  recibe datos de baja calidad, pocos datos o inexactos, tendra como consecuencia un modelo que no cumple con las expectativas. A continuación se describen las entradas y salidas más comunes en modelos generativos, especialmente aquellos que se utilizan para la generación de texto, como GPT.
+Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté realizando. Los modelos están diseñados para crear contenido nuevo en base de los datos de entrada que reciben, por lo tanto un modelo que  recibe datos de baja calidad, pocos datos o inexactos, tendra como consecuencia un modelo que no cumple con las expectativas.
+![Alt text](garbage.jpg)
+
+A continuación se describen las entradas y salidas más comunes en modelos generativos, especialmente aquellos que se utilizan para la generación de texto, como GPT.
 
 # herramientas utilizadas
 
