@@ -29,6 +29,12 @@ como la traducción, el análisis de texto, la generación de preguntas y respue
 ### Incrustaciones (Vectores de alto contexto)
 En el tema de Procesamiento de lenguaje natural (NLP en ingles) son extremadamente importantes, ya que transforman datos de entrada (como texto o imágenes) en un formato numérico que el modelo puede procesar. En el contexto de IA generativa, las incrustaciones son representaciones densas y de baja dimensionalidad de los datos que capturan su significado semántico y estructura.
 Ejemplo de secuencia de incrustaciones que representa una oración:
+Oracion: "El rápido zorro marrón salta sobre el perro perezoso."
+```
+# Secuencia de incrustaciones que representan la oración
+[0.125, -0.345, 0.678, 0.456, -0.234, 0.001, ..., 0.245, -0.876, 0.498]  # Embedding de 768 dimensiones
+
+```
 
 ### Refinamiento
 Se refiere al proceso de mejorar el rendimiento del modelo usando datos especificos, después de su entrenamiento inicial que usualmente es realizado con un gran cuerpo de datos generales de internet. Este proceso puede implicar ajustes en el modelo, en los datos de entrenamiento o en los hiperparámetros, con el objetivo de optimizar la capacidad del modelo para generalizar bien sobre datos no vistos anteriomente y reducir errores. El refinamiento es una etapa crítica para obtener un modelo que realiza la tarea de manera optima y hace predicciones robustas.
