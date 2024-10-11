@@ -48,6 +48,11 @@ Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté rea
 
 A continuación se describen las entradas y salidas más comunes en modelos generativos, especialmente aquellos que se utilizan para la generación de texto, como GPT.
 
+* Entradas:
+- Pregunta/Prompts
+
+* Salidas
+
 # herramientas utilizadas
 
 ## Requerimientos
