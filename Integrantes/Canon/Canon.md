@@ -43,16 +43,22 @@ dropout_rate = 0.5
 ```
 
 ### Entradas/Salidas
-Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté realizando. Los modelos están diseñados para crear contenido nuevo en base de los datos de entrada que reciben, por lo tanto un modelo que  recibe datos de baja calidad, pocos datos o inexactos, tendra como consecuencia un modelo que no cumple con las expectativas.
+Los inputs/outputs pueden variar según el tipo de tarea que el modelo esté realizando. Los modelos están diseñados para crear contenido nuevo en base de los datos de entrada que reciben, por lo tanto un modelo que  recibe datos de baja calidad, pocos datos o inexactos, tendra como consecuencia un modelo que no cumple con las expectativas en cuanto a calidad de respuestas.
 ![Alt text](grabage.png)
+En cambio un modelo provisto de una gran cantidad de datos especificos a la tarea y de alta calidad, puede aportar mucho valor a una empresa de acuerdo a la necesidad.
+A continuación se describen las entradas y salidas más comunes en modelos de lenguaje, especialmente aquellos que se utilizan para la generación de texto, como GPT.
 
-A continuación se describen las entradas y salidas más comunes en modelos generativos, especialmente aquellos que se utilizan para la generación de texto, como GPT.
-
-* Entradas:
-- Pregunta/Prompts
-
-* Salidas
-
+**Entradas/Salidas**
+- Tarea: Q/A
+Pregunta: "¿Cuáles son los beneficios del ejercicio regular?"
+Salida: "El ejercicio regular ofrece múltiples beneficios para la salud, como mejorar la condición cardiovascular, fortalecer los músculos, reducir el riesgo de enfermedades crónicas como la diabetes tipo 2"
+- Tarea: Traducción automatica
+Entrada: "The future of technology looks promising."
+Salida: "El futuro de la tecnología parece prometedor."
+- Tarea: Resumen de texto
+Entrada: "En un artículo sobre cambio climático, los autores discuten las posibles soluciones de efectos del calentamiento global, como la adopción de energías renovables y la reducción de emisiones de carbono a nivel industrial....."
+Salida: "El artículo trata sobre soluciones al cambio climático, enfocándose en energías renovables y reducción de emisiones industriales."
+  
 # herramientas utilizadas
 
 ## Requerimientos
