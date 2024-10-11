@@ -49,13 +49,13 @@ En cambio un modelo provisto de una gran cantidad de datos especificos a la tare
 A continuación se describen las entradas y salidas más comunes en modelos de lenguaje, especialmente aquellos que se utilizan para la generación de texto, como GPT.
 
 **Entradas/Salidas**
-- Tarea: Q/A
+Tarea: Q/A
 Pregunta: "¿Cuáles son los beneficios del ejercicio regular?"
 Salida: "El ejercicio regular ofrece múltiples beneficios para la salud, como mejorar la condición cardiovascular, fortalecer los músculos, reducir el riesgo de enfermedades crónicas como la diabetes tipo 2"
-- Tarea: Traducción automatica
+Tarea: Traducción automatica
 Entrada: "The future of technology looks promising."
 Salida: "El futuro de la tecnología parece prometedor."
-- Tarea: Resumen de texto
+Tarea: Resumen de texto
 Entrada: "En un artículo sobre cambio climático, los autores discuten las posibles soluciones de efectos del calentamiento global, como la adopción de energías renovables y la reducción de emisiones de carbono a nivel industrial....."
 Salida: "El artículo trata sobre soluciones al cambio climático, enfocándose en energías renovables y reducción de emisiones industriales."
   
