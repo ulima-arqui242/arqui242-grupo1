@@ -88,4 +88,11 @@ pip install google-generativeai
 ## Dataset
 
 # Demo
+## Inicio del UI del modelo
+Luego de ejecutar el modelo desde la terminal con el comando de streamlit, se muestra una interfaz de usuario donde se puede realizar preguntas al modelo que ha sido afinado con datos de medicinas como:
 
+![Alt text](Demo-inicio.png)
+
+## Acción de pregunta al modelo
+Una vez hecha la pregunta el modelo puede responder en base a la data usada para afinarlo, asi como basado el sus conocimientos del pre entrenamiento que  tiene en un gran cuerpo de datos
+![Alt text](Demo-pregunta.png)
