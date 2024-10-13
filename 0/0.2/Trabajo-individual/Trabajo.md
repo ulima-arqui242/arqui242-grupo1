@@ -74,7 +74,7 @@ Desarrollado por Google que revolucionó las tareas de NLP. BERT es bidirecciona
 2. **Selección de modelo** Para la creación de chatbots podemos seleccionar modelos generativos como GPT o Gemini, Se entrena el modelo base seleccionado con un conjunto inicial de hiperparámetros.
 3. **Revisión de la afinación** Se muestra el rendimiento del modelo con respecto a la data ingresada, que tan bien esta aprendiendo segun los hiperparametros ingresados.
 4. **Evaluación** Posteriomente se puede probar el modelo, ingresando un conjunto de datos de prueba para medir la utilidad en datos no vistos
-
+![Alt text](pipeline.jpg)
 ## Dataset
 Dado a que el objetivo es tener un bot que responde preguntas sobre medicinas para informar a los usuarios, Se utiliza un dataset que contiene preguntas comunes sobre diferentes medicinas y sus efectos en un campo. El otro campo contiene información que deberia tener la respuesta al realizar una consulta igual o similar de la que esta en el dataset.
 # Demo
