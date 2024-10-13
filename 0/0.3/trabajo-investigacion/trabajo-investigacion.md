@@ -25,6 +25,7 @@
   - [Integración del Análisis Estático en CI/CD](#integración-del-análisis-estático-en-cicd)
     - [Demo con Sonarqube](#demo-con-sonarqube)
     - [Configuración](#configuración)
+  - [Bibliografía](#bibliografía)
 
 ## Fundamentos del Análisis de Código Estático
 
@@ -112,3 +113,9 @@ El análisis estático de código es una parte fundamental de los procesos moder
 [Sonarqube](https://www.sonarqube.org/) es una plataforma de análisis de código estático que permite la evaluación continua de la calidad del código en proyectos de software. Es una herramienta muy utilizada en entornos de desarrollo, ya que proporciona métricas detalladas sobre la seguridad, mantenibilidad y fiabilidad del código. Además, Sonarqube se puede integrar fácilmente en pipelines de integración continua (CI/CD) para automatizar el análisis de código en cada cambio.
 
 ### Configuración
+
+## Bibliografía
+
+- Bardas, A. G. (2010). Static Code Analysis. Journal of Information Systems and Operations Management, 4, 99–107. https://owasp.org/www-community/controls/Static_Code_Analysis
+
+- SonarCloud documentation. (s/f). Sonarcloud.Io. Recuperado el 13 de octubre de 2024, de https://docs.sonarcloud.io/
