@@ -78,6 +78,12 @@ Desarrollado por Google que revolucionó las tareas de NLP. BERT es bidirecciona
 ## Dataset
 Dado a que el objetivo es tener un bot que responde preguntas sobre medicinas para informar a los usuarios, Se utiliza un dataset que contiene preguntas comunes sobre diferentes medicinas y sus efectos en un campo. El otro campo contiene información que deberia tener la respuesta al realizar una consulta igual o similar de la que esta en el dataset.
 # Demo
+## Crear cuenta en Google CLoud y obtener API KEY 
+Se selecciona Gemini porque facilita la afinación de un modelo por medio de una interfaz que facilita su integración y evaluacion.
+Se genera una API KEY para accesar a los modelos de IA de Gemini
+![Alt text](KEY.png)
+Se va a la seccion de new tuned model para ajustar los detalles y proveer los datos necesarios
+![Alt text](tune-model.png)
 ## Inicio del UI del modelo
 Luego de ejecutar el modelo desde la terminal con el comando de streamlit, se muestra una interfaz de usuario donde se puede realizar preguntas al modelo que ha sido afinado con datos de medicinas como:
 
