@@ -11,6 +11,9 @@
     - [1. Errores de Estilo y Convenciones](#1-errores-de-estilo-y-convenciones)
     - [2. Errores de Seguridad](#2-errores-de-seguridad)
     - [3. Problemas de Complejidad y Mantenimiento](#3-problemas-de-complejidad-y-mantenimiento)
+  - [Ventajas y Limitaciones del Análisis de Código Estático](#ventajas-y-limitaciones-del-análisis-de-código-estático)
+    - [Ventajas](#ventajas)
+    - [Limitaciones](#limitaciones)
   - [Herramientas de Análisis de Código Estático](#herramientas-de-análisis-de-código-estático)
   - [Métricas de Evaluación en el Análisis de Código Estático](#métricas-de-evaluación-en-el-análisis-de-código-estático)
     - [1. Complejidad Ciclomática](#1-complejidad-ciclomática)
@@ -52,6 +55,18 @@ El análisis estático es crucial para la detección de vulnerabilidades de segu
 ### 3. Problemas de Complejidad y Mantenimiento
 
 Un código con alta complejidad ciclomatica tiende a ser difícil de entender, probar y mantener. Las herramientas de análisis estático pueden medir la complejidad del código y sugerir áreas donde se necesita simplificación o refactorización para mejorar la mantenibilidad. La complejidad ciclomatica mide el número de caminos independientes que existen en el código fuente, lo cual indica cuán complejo es el flujo de control.
+
+## Ventajas y Limitaciones del Análisis de Código Estático
+
+### Ventajas
+
+- **Detección temprana de errores:** El análisis de código estático permite identificar problemas antes de que el software entre en producción, lo que reduce los costos asociados con la corrección de errores.
+- **Mejora de la calidad del código:** Las herramientas de análisis estático promueven la implementación de buenas prácticas de programación y ayudan a mejorar la legibilidad y mantenibilidad del código.
+
+### Limitaciones
+
+- **Falsos positivos:** Es común que las herramientas de análisis estático generen falsos positivos, lo que puede generar confusión y pérdida de tiempo en la revisión de problemas que no son reales.
+- **Cobertura limitada de problemas de ejecución:** El análisis estático no puede detectar problemas que ocurren solo en tiempo de ejecución, como problemas de rendimiento o errores de lógica que dependen de condiciones de entrada específicas.
 
 ## Herramientas de Análisis de Código Estático
 
@@ -116,6 +131,6 @@ El análisis estático de código es una parte fundamental de los procesos moder
 
 ## Bibliografía
 
-- Bardas, A. G. (2010). Static Code Analysis. Journal of Information Systems and Operations Management, 4, 99–107. https://owasp.org/www-community/controls/Static_Code_Analysis
+- Bardas, A. G. (2010). Static Code Analysis. Journal of Information Systems and Operations Management, 4, 99–107. <https://owasp.org/www-community/controls/Static_Code_Analysis>
 
-- SonarCloud documentation. (s/f). Sonarcloud.Io. Recuperado el 13 de octubre de 2024, de https://docs.sonarcloud.io/
+- SonarCloud documentation. (s/f). Sonarcloud.Io. Recuperado el 13 de octubre de 2024, de <https://docs.sonarcloud.io/>
