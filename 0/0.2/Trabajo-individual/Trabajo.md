@@ -94,3 +94,5 @@ Luego de ejecutar el modelo desde la terminal con el comando de streamlit, se mu
 Una vez hecha la pregunta el modelo  respondera en base a la data usada para afinarlo, asi como basado el sus conocimientos del pre entrenamiento que  tiene en un gran cuerpo de datos.
 ![Alt text](Demo-pregunta.png)
 Se cuenta con un historial de las preguntas al final de la interfaz.
+
+- Link video : https://drive.google.com/file/d/1bkLgGC7-v5IBlso1FHYhkneoY03sgTHG/view?usp=sharing
