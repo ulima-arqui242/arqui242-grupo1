@@ -68,6 +68,10 @@ A continuación se describen las entradas y salidas más comunes en modelos de l
 # herramientas utilizadas
 
 ## Requerimientos
+- Cuenta en Google cloud Platform / Google AI studio
+- Gemini PRO API KEY
+- Dataset
+
 
 ### Pip
 ```
@@ -81,12 +85,13 @@ pip install google-generativeai
 - Gemini
 - BERT
 ### Proceso de refinamiento
-1. Generar un dataset que ya esta limpiado y contiene información relevante para lograr refinar el modelo 
-2. Para la creación de chatbots podemos seleccionar modelos generativos como GPT o Gemini, modelos como BERT y XLNET son comunmente usados en tareas de clasificación y regresión.
-3. 
+1. **Carga y preparación de datos** Generar un dataset que contiene información relevante para lograr refinar el modelo, por defecto modelos como GPT y Gemini procesan simbolos como comas y signos de admiración e interrogación.
+2. **Selección de modelo** Para la creación de chatbots podemos seleccionar modelos generativos como GPT o Gemini, Se entrena el modelo base seleccionado con un conjunto inicial de hiperparámetros.
+3. **Revisión de la afinación** Se muestra el rendimiento del modelo con respecto a la data ingresada, que tan bien esta aprendiendo segun los hiperparametros ingresados.
+4. **Evaluación** Posteriomente se puede probar el modelo, ingresando un conjunto de datos de prueba para medir la utilidad en datos no vistos
 
 ## Dataset
-
+Dado a que el objetivo es tener un bot que responde preguntas sobre medicinas para informar a los usuarios, Se utiliza un dataset que contiene preguntas comunes sobre diferentes medicinas y sus efectos en un campo. El otro campo contiene información que deberia tener la respuesta al realizar una consulta igual o similar de la que esta en el dataset.
 # Demo
 ## Inicio del UI del modelo
 Luego de ejecutar el modelo desde la terminal con el comando de streamlit, se muestra una interfaz de usuario donde se puede realizar preguntas al modelo que ha sido afinado con datos de medicinas como:
@@ -94,5 +99,6 @@ Luego de ejecutar el modelo desde la terminal con el comando de streamlit, se mu
 ![Alt text](Demo-inicio.png)
 
 ## Acción de pregunta al modelo
-Una vez hecha la pregunta el modelo puede responder en base a la data usada para afinarlo, asi como basado el sus conocimientos del pre entrenamiento que  tiene en un gran cuerpo de datos
+Una vez hecha la pregunta el modelo  respondera en base a la data usada para afinarlo, asi como basado el sus conocimientos del pre entrenamiento que  tiene en un gran cuerpo de datos.
 ![Alt text](Demo-pregunta.png)
+Se cuenta con un historial de las preguntas al final de la interfaz.
