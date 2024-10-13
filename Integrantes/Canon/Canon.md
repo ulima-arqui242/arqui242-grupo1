@@ -81,11 +81,11 @@ pip install google-generativeai
 ```
 
 ## Modelos
-- GPT (Generative Pretrained Transformer)
+- **GPT (Generative Pretrained Transformer)**:
 Diseñado para generar texto de manera coherente y contextual a partir de una entrada dada. Fue desarrollado por OpenAI, con varias versiones mejoradas. Se utiliza en diversas aplicaciones de generación de texto, como chatbots, asistentes virtuales, resumen de texto, y generación de contenido creativo.
-- Gemini (Seleccionado para la DEMO)
+- **Gemini** (Seleccionado para la DEMO):
 Se sabe que está diseñado para resolver tareas de generación de lenguaje natural, razonamiento y resolución de problemas segun google. Esta dirigido a mejorar la generación de texto natural, comprensión de preguntas complejas y crear aplicaciones que requieran tanto razonamiento como interacción con usuarios por texto.
-- BERT
+- **BERT (Bidirectional Encoder Representations from Transformers)**:
 Desarrollado por Google que revolucionó las tareas de NLP. BERT es bidireccional, lo que significa que tiene en cuenta tanto el contexto anterior como el posterior de una palabra en una oración. BERT se utiliza en tareas como análisis de sentimiento, respuesta a preguntas, clasificación de texto, y otros problemas relacionados con el entendimiento del lenguaje.
 ### Proceso de refinamiento
 1. **Carga y preparación de datos** Generar un dataset que contiene información relevante para lograr refinar el modelo, por defecto modelos como GPT y Gemini procesan simbolos como comas y signos de admiración e interrogación.
