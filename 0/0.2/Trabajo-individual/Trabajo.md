@@ -11,9 +11,10 @@ como la traducción, el análisis de texto, la generación de preguntas y respue
 ### Incrustaciones (Vectores de alto contexto)
 En el tema de Procesamiento de lenguaje natural (NLP en ingles) son extremadamente importantes, ya que transforman datos de entrada (como texto o imágenes) en un formato numérico que el modelo puede procesar. En el contexto de IA generativa, las incrustaciones son representaciones densas y de baja dimensionalidad de los datos que capturan su significado semántico y estructura.
 Ejemplo de secuencia de incrustaciones que representa una oración:
-Oracion: "El rápido zorro marrón salta sobre el perro perezoso."
+
 ```
 # Secuencia de incrustaciones que representan la oración
+## Oracion: "El rápido zorro marrón salta sobre el perro perezoso."
 [0.125, -0.345, 0.678, 0.456, -0.234, 0.001, ..., 0.245, -0.876, 0.498]  # Embedding de 768 dimensiones
 
 ```
