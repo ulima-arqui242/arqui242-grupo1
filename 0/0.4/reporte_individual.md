@@ -1,4 +1,4 @@
-# Data Warehouse vs Data Lake vs Data Mart
+# Data Warehouse vs Data Lake vs Data Mesh
 
 ## Definiciones
 
@@ -6,7 +6,7 @@
 
 ### ¿Que es un Data Lake?
 
-### ¿Que es un Data Mart?
+### ¿Que es un Data Mesh?
 
 
 ## Características y herramientas utilizadas
