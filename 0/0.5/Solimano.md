@@ -85,7 +85,11 @@ Neo4j permite realizar consultas rápidas sobre datos complejos, lo que es vital
 
 ## Video de la Demo en Youtube
 
-https://youtu.be/CskkwSEtaHQ
+https://youtu.be/CskkwSEtaHQ  
+
+## Presentación en Presentaciones de Google
+
+https://docs.google.com/presentation/d/1NWoTcI0dDhxq836u2Jt7YjxcmQ-qfoYZ85tRFBtkSS8/edit?usp=sharing
 
 ## Conclusiones
 
