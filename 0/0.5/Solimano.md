@@ -83,6 +83,10 @@ Al identificar productos que se compran juntos o clientes con comportamientos de
 
 Neo4j permite realizar consultas rápidas sobre datos complejos, lo que es vital para industrias que dependen de análisis en tiempo real, como el comercio electrónico y la logística (Dominguez-Sal et al., 2021). Esta capacidad de respuesta inmediata facilita la toma de decisiones y la optimización continua de procesos.
 
+## Video de la Demo en Youtube
+
+https://youtu.be/CskkwSEtaHQ
+
 ## Conclusiones
 
 Las bases de datos orientadas a grafos, como Neo4j, son herramientas poderosas para modelar y analizar relaciones complejas en datos conectados. Con aplicaciones en redes sociales, recomendaciones de productos y optimización logística, estas bases de datos permiten a las empresas mejorar su eficiencia operativa y generar mejores experiencias para los clientes (Robinson et al., 2019).
