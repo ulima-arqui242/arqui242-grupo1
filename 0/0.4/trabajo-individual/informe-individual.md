@@ -28,7 +28,7 @@ Para terminar de explicar los tres conceptos, tengo tres ejemplos para demostrar
 
 ### Herramientas
 **Data Warehouse:**
-- **BigQuery**: Servicio de Data Warehouse en la nube de Google, diseñado para consultas en grandes volúmenes de datos utilizando SQL.
+- **BigQuery**: Servicio de Data Warehouse en la nube de Google, diseñado para consultas en grandes volúmenes de datos utilizando SQL y con una arquitectura serverless.
 - **Amazon Redshift**: Ofrecido por AWS, Redshift es un Data Warehouse en la nube que destaca por su capacidad para manejar grandes escalas de datasets, ofreciendo un rendimiento rápido para las consultas.
 - **Snowflake**: Plataforma de Data Warehousing basada en la nube que separa el almacenamiento y computo, permitiendo a los usuarios escalar recursos de forma independiente y pagar por lo que usan, facilitando el manejo de datos sin preocuparse por la gestión de infraestructura.
 
