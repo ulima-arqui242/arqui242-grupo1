@@ -38,6 +38,10 @@ El análisis de código estático se refiere a la evaluación del código fuente
 
 Según la [Fundación OWASP](https://owasp.org/www-community/controls/Static_Code_Analysis), el análisis de código estático es una herramienta fundamental en el desarrollo seguro de software, ya que permite la identificación temprana de vulnerabilidades antes de que el código sea ejecutado.
 
+<p align="center">
+    <img src="./images/analisis-codigo-estatico.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
 ### Propósito del Análisis Estático
 
 El propósito principal del análisis estático es detectar problemas en el código que podrían afectar su funcionalidad, seguridad o rendimiento. Estos problemas incluyen errores de lógica, malas prácticas de codificación, vulnerabilidades de seguridad y áreas donde el código puede ser optimizado. Además, ayuda a garantizar que el código siga los estándares de la organización y cumple con las directrices de calidad.
@@ -48,13 +52,25 @@ El propósito principal del análisis estático es detectar problemas en el cód
 
 El análisis de código estático puede detectar violaciones a las convenciones de codificación, como el uso de nombres inapropiados para las variables, falta de comentarios, o el uso incorrecto de espacios en blanco y sangría. Estas reglas de estilo ayudan a mantener un código más legible y mantenible a largo plazo.
 
+<p align="center">
+    <img src="./images/error-estilo.png" alt="Análisis de Código Estático" width="400"/>
+</p>
+
 ### 2. Errores de Seguridad
 
 El análisis estático es crucial para la detección de vulnerabilidades de seguridad. Según OWASP, las herramientas de análisis estático pueden identificar fallos en la gestión de entradas de usuarios, como inyecciones de SQL, ataques de scripting entre sitios (XSS), y errores en la gestión de autenticación. Estas vulnerabilidades, si no se detectan a tiempo, pueden ser explotadas por atacantes malintencionados para comprometer la seguridad de la aplicación.
 
+<p align="center">
+    <img src="./images/error-seguridad.png" alt="Análisis de Código Estático" width="400"/>
+</p>
+
 ### 3. Problemas de Complejidad y Mantenimiento
 
 Un código con alta complejidad ciclomatica tiende a ser difícil de entender, probar y mantener. Las herramientas de análisis estático pueden medir la complejidad del código y sugerir áreas donde se necesita simplificación o refactorización para mejorar la mantenibilidad. La complejidad ciclomatica mide el número de caminos independientes que existen en el código fuente, lo cual indica cuán complejo es el flujo de control.
+
+<p align="center">
+    <img src="./images/problema-mantenimiento.png" alt="Análisis de Código Estático" width="400"/>
+</p>
 
 ## Ventajas y Limitaciones del Análisis de Código Estático
 
@@ -76,6 +92,10 @@ Existen varias herramientas populares para realizar análisis de código estáti
 - **ESLint**: Utilizada principalmente para proyectos en JavaScript, esta herramienta detecta problemas de sintaxis y estilo.
 - **FindBugs**: Herramienta para analizar código Java y detectar errores comunes.
 - **Sonarqube**: Plataforma de análisis de código estático que proporciona métricas detalladas sobre la calidad del código.
+
+<p align="center">
+      <img src="./images/herramientas.png" alt="Análisis de Código Estático" width="500"/>
+</p>
 
 ## Métricas de Evaluación en el Análisis de Código Estático
 
@@ -123,9 +143,17 @@ Además de medir la complejidad ciclomatica global del proyecto, algunas herrami
 
 El análisis estático de código es una parte fundamental de los procesos modernos de integración continua y entrega continua (CI/CD). Al integrar herramientas como Sonarqube en los pipelines de CI/CD, los equipos de desarrollo pueden recibir retroalimentación inmediata sobre la calidad del código con cada cambio o commit realizado. Esto ayuda a mantener la calidad del código a lo largo del ciclo de vida del proyecto y permite la detección temprana de problemas, reduciendo los costos asociados con la corrección de errores en fases tardías.
 
+<p align="center">
+      <img src="./images/herramientas-ci.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
 ### Demo con Sonarqube
 
 [Sonarqube](https://www.sonarqube.org/) es una plataforma de análisis de código estático que permite la evaluación continua de la calidad del código en proyectos de software. Es una herramienta muy utilizada en entornos de desarrollo, ya que proporciona métricas detalladas sobre la seguridad, mantenibilidad y fiabilidad del código. Además, Sonarqube se puede integrar fácilmente en pipelines de integración continua (CI/CD) para automatizar el análisis de código en cada cambio.
+
+<p align="center">
+      <img src="./images/sonarqube-sonarcloud.png" alt="Análisis de Código Estático" width="500"/>
+</p>
 
 ### Configuración
 
