@@ -93,7 +93,7 @@ https://docs.google.com/presentation/d/1NWoTcI0dDhxq836u2Jt7YjxcmQ-qfoYZ85tRFBtk
 
 ## Conclusiones
 
-Las bases de datos orientadas a grafos, como Neo4j, son herramientas poderosas para modelar y analizar relaciones complejas en datos conectados. Con aplicaciones en redes sociales, recomendaciones de productos y optimización logística, estas bases de datos permiten a las empresas mejorar su eficiencia operativa y generar mejores experiencias para los clientes (Robinson et al., 2019).
+Las bases de datos orientadas a grafos, como Neo4j, son herramientas poderosas para modelar y analizar relaciones complejas en datos conectados. Con aplicaciones en redes sociales, recomendaciones de productos y optimización logística, estas bases de datos permiten a las empresas mejorar su eficiencia operativa y generar mejores experiencias para los clientes.
 
 La capacidad de estas bases de datos para manejar grandes volúmenes de datos interconectados las convierte en una opción ideal para organizaciones que necesitan comprender y gestionar las relaciones entre sus datos. A medida que las empresas continúan migrando hacia soluciones de análisis de datos más avanzadas, las bases de datos de grafos seguirán ganando relevancia.
 
