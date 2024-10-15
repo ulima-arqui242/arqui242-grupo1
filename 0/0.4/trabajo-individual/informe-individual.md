@@ -95,3 +95,5 @@ Para terminar de explicar los tres conceptos, tengo tres ejemplos para demostrar
 
 ## Demo
 Para realizar una pequeña demostración he utilizado Google Big Query para mostrar como se maneja la información de un Data Warehouse usando un pequeño archivo CSV como ejemplo. Y para mostrar la flexibilidad de un Data Lake he usado Databricks para manejar información almacenada dentro de buckets en Google Cloud, estos buckets te permiten almacenar "objetos" los cuales no estan limitados a un solo tipo de dato.
+
+**VIDEO:** https://drive.google.com/file/d/1M0WR-4aogJFCLDw7ookCIz3HLIjEIaFt/view?usp=sharing
