@@ -15,6 +15,50 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 
 
 ## Ventajas y desventajas
+**DATA WAREHOUSE**  
+*Ventajas:*
+- **Optimización para Consultas:** Los DW están altamente optimizados para realizar consultas complejas, permitiendo análisis avanzados y respuestas rápidas a preguntas de negocio.
+- **Consistencia de Datos:** Al almacenar datos que ya han sido procesados y estructurados, garantizan una alta consistencia y calidad de los datos.
+- **Facilidad de Uso:** Las herramientas de BI que se conectan a los DW suelen ser fáciles de usar, permitiendo a los usuarios no técnicos generar informes y visualizaciones.
+- **Seguridad de Datos:** Ofrecen robustas capacidades de seguridad, lo cual es esencial para cumplir con normativas en varios sectores.
+- **Historial de Datos:** Almacenan datos históricos, lo que permite análisis longitudinales y de tendencias.
+
+*Desventajas:*
+- **Costo:** La implementación y el mantenimiento pueden ser costosos, requiriendo inversiones significativas en infraestructura y software.
+- **Rigidez:** La estructura fija y el esquema predefinido pueden ser limitantes, especialmente cuando se necesita incorporar rápidamente nuevos tipos de datos o cambios en los requisitos.
+- **Latencia de Datos:** Los procesos ETL introducen latencias que pueden limitar la capacidad de realizar análisis en tiempo real.
+- **Complejidad:** La configuración y mantenimiento de un DW requieren experiencia técnica.
+- **Escalabilidad:** Aunque han mejorado con soluciones en la nube, la escalabilidad puede ser un desafío.
+
+**DATA LAKE**  
+*Ventajas:*
+- **Flexibilidad:** Son capaces de almacenar datos no estructurados, semi-estructurados y estructurados, lo que ofrece una gran adaptabilidad.
+- **Escalabilidad:** Son altamente escalables, especialmente en entornos de nube, permitiendo almacenar grandes cantidades de datos a bajo costo.
+- **Costo-Efectividad:** Generalmente son más económicos que los Data Warehouses para almacenar grandes volúmenes de datos.
+- **Innovación en Datos:** Ideal para data science y machine learning, ya que los científicos de datos pueden acceder a datos crudos y experimentar con ellos.
+- **Agilidad:** Los usuarios pueden acceder y analizar datos rápidamente sin necesidad de procesos ETL extensivos.
+
+*Desventajas:*
+- **Gestión Compleja:** Requiere una gestión cuidadosa para evitar convertirse en un "data swamp" donde los datos son difíciles de encontrar y utilizar.
+- **Seguridad y Gobernanza:** La seguridad y la gobernanza de datos son más complejas y pueden ser difíciles de implementar de manera efectiva.
+- **Calidad de Datos:** Puede ser complicado garantizar la calidad de los datos, dado que se almacenan en su formato crudo.
+- **Herramientas Especializadas:** A menudo se requieren herramientas y habilidades especializadas para procesar y analizar datos almacenados en un Data Lake.
+- **Dependencia de Expertos:** Depende en gran medida de especialistas en datos para extraer valor.
+
+**DATA MESH**  
+*Ventajas:*
+- **Descentralización:** Facilita la descentralización de la gestión de datos, permitiendo que los equipos de cada dominio gestionen sus propios datos.
+- **Agilidad:** Mejora la agilidad al reducir las dependencias centralizadas.
+- **Escalabilidad:** Permite una escalabilidad efectiva distribuyendo la carga y el procesamiento de datos a través de múltiples dominios.
+- **Calidad de Datos Mejorada:** Cada dominio es responsable de la calidad de sus datos, lo que puede mejorar la precisión y la utilidad general de los datos.
+- **Colaboración:** Promueve una mayor colaboración entre equipos, ya que facilita compartir y acceder a datos entre dominios.
+
+*Desventajas:*
+- **Complejidad Organizativa:** Requiere cambios organizativos significativos y una redefinición de los procesos y responsabilidades.
+- **Inversión en Tecnología:** Puede requerir una inversión inicial significativa en tecnología y formación para una implementación efectiva.
+- **Gobernanza Desafiante:** La gobernanza puede ser más complicada debido a la naturaleza distribuida de los datos.
+- **Riesgos de Seguridad:** La distribución de datos aumenta los riesgos de seguridad.
+- **Dependencia de la Cultura de Datos:** Requiere una fuerte cultura de gestión y colaboración de datos para ser efectiva.
 
 
 ## Demo
