@@ -4,37 +4,48 @@
 
 ### ¿Que es un Data Warehouse?
 Un Data Warehouse (DW) es una almacén de datos estructurados donde generalmente una empresa u organización mantiene una gran cantidad de información. Los datos de un Data Warehouse se almacenan de forma que sea fácil acceder a esta información y son estructurados y procesados previamente para facilitar su uso en análisis de negocios y generación de reportes. Para poder procesar la información previo a su almacenamiento se sigue un proceso ETL (Extract, Transform, Load) optimizandolo asi para consultas. Los DW usualmente tienen un esquema definido.
+
 ![](DW.png)
 
 ### ¿Que es un Data Lake?
 Un Data Lake (DL) es un repositorio centralizado que almacena datos en su estado original, sean estructurados, semi-estructurados y no estructurados. Los Data Lakes al no necesitar de un esquema predefinido y aceptar cualquier formato de datos evita que sean necesarios los procesos ETL para cargar la información, en su lugar, un proceso llamado ELT (Extract, Load, Transform) se lleva a cabo, esto los hace especialmente útiles para análisis en tiempo real, dashboards, machine learning y big data, ya que permiten la flexibilidad de manipular datos crudos sin necesidad de transformarlos antes del almacenamiento.
+
 ![](DL.png)
 
 ### ¿Que es un Data Mesh?
 Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arquitectónico promueve la colaboración ya que a diferencia de los dos almacenes de datos vistos previamente (DW y DL) el Data Mesh divide a la información en múltiples dominios dentro de una organización donde cada dominio es controlado por un equipo independiente. Esta arquitectura mira a los datos como productos, el equipo de cada dominio procesa su información y la vuelve un Data Product (DP) lista para ser compartida con los demas dominios, por ejemplo, un producto de datos (DP) creado por el equipo de inventario puede ser aprovechado por el equipo de marketing u otros dominios dentro de la empresa para diversos fines. Los DM buscan resolver los desafíos de escalabilidad y colaboración que surgen con la centralización de datos, promoviendo la democratización de la información y una gestión más ágil.
+
 ![](DM.png)
+
 
 ## Características y herramientas utilizadas
 
+Las características que mas distinguen a los tres conceptos son la centralización, la estructura de datos y los procesos relacionados a la carga de datos. Por ejemplo, tanto los Data Warehouses como los Data Lakes son centralizados en términos de almacenamiento, es decir Los DW actuan como un único punto de encuentro para todas las fuentes de datos de una organización, al igual que el Data Lake esta organización facilita el acceso a la información y permite que ambos proporcionen un entorno de datos estables, sin embargo, a diferencia de los DW que son centralizados en el procesamiento y análisis de datos estructurados, los Data Lakes permiten más flexibilidad y escalabilidad en el manejo de tipos de datos y análisis de los mismos, sin requerir un esquema definido previamente aumentando su adaptabilidad, por otro lado los Data Mesh son totalmente descentralizados, lo que significa que distribuyen su gestión de datos a través de todos los dominios de una organización lo cual permite que cada dominio optimice el manejo de sus datos según sus necesidades particulares, en lugar de depender de un único sistema centralizado.
+
+Respecto a los procesos relacionados a la carga de datos, en un Data Warehouse el proceso ETL es esencial. Este proceso implica extraer datos de diversas fuentes, transformarlos para cumplir con los requisitos del DW y finalmente cargarlos en el sistema centralizado. En cambio, los Data Lakes utilizan principalmente el proceso ELT (Extract, Load, Transform), donde los datos se cargan en su forma original y la transformación ocurre después según se necesiten para análisis específicos. Por último, los Data Mesh, con su estructura descentralizada, pueden utilizar tanto ETL como ELT, dependiendo de las necesidades específicas de cada dominio donde cada uno gestiona sus procesos de carga de datos de forma autónoma. 
+
+Para terminar de explicar los tres conceptos, tengo tres ejemplos para demostrar como estas arquitecturas pueden resultar útiles en distintos contextos reales. Los DW son usados con frecuencia en el sector financiero, donde necesitan realizar análisis complejos y generar informes regulatorios; Los DL suelen ser utilizados por mmpresas de medios y redes sociales para almacenar y analizar grandes volúmenes de contenido multimedia para recomendaciones personalizadas; Y los DM son ideales para grandes corporaciones que necesiten gestionar datos de clientes, productos, operaciones, etcétera de manera independiente pero cohesiva.
 
 ### Herramientas
-**Data Warehouse (DW):**
+**Data Warehouse:**
 - **BigQuery**: Servicio de Data Warehouse en la nube de Google, diseñado para consultas en grandes volúmenes de datos utilizando SQL.
 - **Amazon Redshift**: Ofrecido por AWS, Redshift es un Data Warehouse en la nube que destaca por su capacidad para manejar grandes escalas de datasets, ofreciendo un rendimiento rápido para las consultas.
 - **Snowflake**: Plataforma de Data Warehousing basada en la nube que separa el almacenamiento y computo, permitiendo a los usuarios escalar recursos de forma independiente y pagar por lo que usan, facilitando el manejo de datos sin preocuparse por la gestión de infraestructura.
 
-**Data Lake (DL):**
+**Data Lake:**
 - **Azure Data Lake**: Solución de almacenamiento en la nube de Microsoft diseñada para almacenar grandes volúmenes de datos en su forma original, facilitando el análisis de Big Data.
 - **Amazon S3 (Amazon Simple Storage Service)**: Servicio de almacenamiento de objetos de AWS que ofrece escabilidad, seguridad, rendimiento y disponibilidad de datos.
 - **Hadoop**: Framework de software que permite el procesamiento distribuido de grandes datos a través de clusters de computadoras, utilizando simple modelado de datos y almacenamiento a gran escala.
 
-**Data Mesh (DM):**
+**Data Mesh:**
 - **Kafka**: Plataforma de streaming de eventos distribuida que permite publicar, suscribir, almacenar y procesar flujos de registros en tiempo real, siendo fundamental para la arquitectura de microservicios y procesamiento de eventos.
 - **Confluent**: Plataforma que se construye alrededor de Kafka para mejorar su capacidad, gestionabilidad y seguridad, ofreciendo herramientas para construir y gestionar aplicaciones basadas en flujos de datos en tiempo real.
 
 
 ## Ventajas y desventajas
+
 ### DATA WAREHOUSE  
+
 *Ventajas:*
 - **Optimización para Consultas:** Los DW están altamente optimizados para realizar consultas complejas, permitiendo análisis avanzados y respuestas rápidas a preguntas de negocio.
 - **Consistencia de Datos:** Al almacenar datos que ya han sido procesados y estructurados, garantizan una alta consistencia y calidad de los datos.
@@ -50,6 +61,7 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 - **Escalabilidad:** Aunque han mejorado con soluciones en la nube, la escalabilidad puede ser un desafío.
 
 ### DATA LAKE  
+
 *Ventajas:*
 - **Flexibilidad:** Son capaces de almacenar datos no estructurados, semi-estructurados y estructurados, lo que ofrece una gran adaptabilidad.
 - **Escalabilidad:** Son altamente escalables, especialmente en entornos de nube, permitiendo almacenar grandes cantidades de datos a bajo costo.
@@ -65,6 +77,7 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 - **Dependencia de Expertos:** Depende en gran medida de especialistas en datos para extraer valor.
 
 ### DATA MESH  
+
 *Ventajas:*
 - **Descentralización:** Facilita la descentralización de la gestión de datos, permitiendo que los equipos de cada dominio gestionen sus propios datos.
 - **Agilidad:** Mejora la agilidad al reducir las dependencias centralizadas.
