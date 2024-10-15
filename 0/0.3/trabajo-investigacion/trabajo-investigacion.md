@@ -401,15 +401,3 @@ Adjunto Link de Youtube y Drive, por si no se puede visualizar en uno de los dos
 - Bardas, A. G. (2010). Static Code Analysis. Journal of Information Systems and Operations Management, 4, 99–107. <https://owasp.org/www-community/controls/Static_Code_Analysis>
 
 - SonarCloud documentation. (s/f). Sonarcloud.Io. Recuperado el 13 de octubre de 2024, de <https://docs.sonarcloud.io/>
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
