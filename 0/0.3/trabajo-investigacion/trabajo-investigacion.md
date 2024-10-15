@@ -27,7 +27,19 @@
     - [9. Cyclomatic Complexity per Function](#9-cyclomatic-complexity-per-function)
   - [Integración del Análisis Estático en CI/CD](#integración-del-análisis-estático-en-cicd)
     - [Demo con Sonarqube](#demo-con-sonarqube)
-    - [Configuración](#configuración)
+    - [Configuración de Sonarqube](#configuración-de-sonarqube)
+      - [Instalación Manual - Windows](#instalación-manual---windows)
+      - [Instalación Manual - Macos](#instalación-manual---macos)
+        - [Prerrequisito: Instalar JDK 17](#prerrequisito-instalar-jdk-17)
+        - [Instalación de Sonarqube](#instalación-de-sonarqube)
+        - [Instalación de SonarScanner](#instalación-de-sonarscanner)
+      - [Instalación Multiplataforma](#instalación-multiplataforma)
+      - [Paso Extra: Instalación de SonarLint en VSCode](#paso-extra-instalación-de-sonarlint-en-vscode)
+    - [Configuración del Proyecto en Sonarqube](#configuración-del-proyecto-en-sonarqube)
+    - [Interpretación de Resultados](#interpretación-de-resultados)
+    - [Demo con SonarCloud](#demo-con-sonarcloud)
+    - [Implementación de SonarCloud en pipelines de CI/CD](#implementación-de-sonarcloud-en-pipelines-de-cicd)
+  - [Link del video de la demostración](#link-del-video-de-la-demostración)
   - [Bibliografía](#bibliografía)
 
 ## Fundamentos del Análisis de Código Estático
@@ -155,10 +167,249 @@ El análisis estático de código es una parte fundamental de los procesos moder
       <img src="./images/sonarqube-sonarcloud.png" alt="Análisis de Código Estático" width="500"/>
 </p>
 
-### Configuración
+### Configuración de Sonarqube
+
+#### Instalación Manual - Windows
+
+La instalación detallada de Sonarqube en Windows se encuentra en el siguiente manual que realicé: [Instalación de Sonarqube en Windows](./common/manuales/Implementación%20SonarQube%20en%20Windows.pdf)
+
+#### Instalación Manual - Macos
+
+##### Prerrequisito: Instalar JDK 17
+
+Sonarqube requiere JDK 17 para funcionar correctamente. Puedes instalarlo con Homebrew utilizando el siguiente comando:
+
+```bash
+brew install openjdk@17
+```
+
+Verifica la instalación con:
+
+```bash
+java -version
+```
+
+##### Instalación de Sonarqube
+
+Una vez instalado el JDK, puedes proceder a instalar Sonarqube con Homebrew:
+
+```bash
+brew install sonarqube
+```
+
+Para iniciar Sonarqube, ejecuta el siguiente comando:
+
+```bash
+brew services start sonarqube
+```
+
+##### Instalación de SonarScanner
+
+Para ejecutar análisis desde la línea de comandos, también es necesario instalar el sonar-scanner. Esto se puede hacer fácilmente con Homebrew:
+
+```bash
+brew install sonar-scanner
+```
+
+Verifica que esté correctamente instalado ejecutando:
+
+```bash
+sonar-scanner --version
+```
+
+#### Instalación Multiplataforma
+
+Para una instalación más rápida podemos usar Docker junto a Docker Compose. Para ello, podemos utilizar el siguiente archivo `docker-compose.yml`: [docker-compose.yml](./common/docker-compose.yml)
+
+#### Paso Extra: Instalación de SonarLint en VSCode
+
+SonarLint es una extensión para Visual Studio Code que permite analizar el código en tiempo real y detectar problemas de calidad automáticamente. Para instalar SonarLint en VSCode, cree un manual que puede seguir: [Instalación de SonarLint en VSCode](./common/manuales/Implementación%20SonarLint%20en%20VSCode.pdf)
+
+### Configuración del Proyecto en Sonarqube
+
+1. **Accede a Sonarqube**: Una vez iniciado Sonarqube, abre el navegador y ve a [http://localhost:9000](http://localhost:9000).
+2. **Inicia sesión**: Utiliza el usuario y contraseña predeterminados:
+   - **Usuario**: `admin`
+   - **Contraseña**: `admin`
+3. **Cambia la contraseña**: Sonarqube te pedirá cambiar la contraseña en el primer inicio de sesión.
+4. **Generar token global**:
+   - Cada proyecto necesita un token para poder ser ejecutado. Para evitar crear un token por cada proyecto. Podemos irnos a nuestro perfil (Click en la esquina superior derecha y seleccionar `My Account`, luego seleccionar `Security` y `Generate Tokens`). Generamos un token de Analisis Global, que no tenga fecha de expiración y guardamos el token en un lugar seguro.
+
+<p align="center">
+         <img src="./images/sonarqube-token.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+5. **Crear un nuevo proyecto**:
+   - Ve a la sección "Projects" y selecciona "Create Project".
+   - Asigna un nombre a tu proyecto (por ejemplo, "MiProyecto") y usa el token generado anteriormente.
+   - Seleccionas el lenguaje de programación de tu proyecto.
+   - Seleccionas tu sistema operativo y te dará un comando a ejecutar parecido a este:
+     `bash
+sonar-scanner -D"sonar.projectKey=MiProyecto" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=TuToken"
+`
+     Con estos pasos, ya tendrás tu proyecto configurado en Sonarqube y podrás ejecutar análisis de código estático en él.
+
+Sin embargo, para evitar recordar todo ese comando, hay una forma más sencilla y es crear un archivo `sonar-project.properties` en la raíz de tu proyecto con la siguiente información:
+
+```properties
+sonar.projectKey=MiProyecto
+sonar.sources=.
+sonar.host.url=http://localhost:9000
+sonar.login=TuToken
+```
+
+De todas formas adjunto un archivo guía: [local sonar-project.properties](./common/sonar-project.properties)
+
+Con esto configurado, solo ejecuta el comando `sonar-scanner` en la raíz de tu proyecto y podrás ver los resultados en Sonarqube.
+
+### Interpretación de Resultados
+
+Después de ejecuta el comando `sonar-scanner`, podrás ver los resultados de tu proyecto en `localhost:9000`.
+
+<p align="center">
+         <img src="./images/sonarqube-success-scan.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+Como se puede observar en la imagen, vemos unas cuantas métricas que nos indican la calidad del código de nuestro proyecto.
+
+Para mayor detalle podemos darle click a cada una de estás métricas. En este caso seleccionaremos la pestaña `Issues`:
+
+<p align="center">
+         <img src="./images/sonarqube-tabs.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+En la pestaña `Issues` podemos ver los problemas detectados en nuestro código, clasificados por severidad, tipo y atributo de calidad de software.
+
+Cuando seleccionamos un problema en particular, podemos ver más detalles sobre el mismo, incluyendo una descripción del problema, la ubicación en el código y sugerencias para su resolución.
+
+<p align="center">
+         <img src="./images/sonarqube-detailed.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+Como se observa en la imagen, te da el nombre del error, una descripción, qué línea fue afectada, cuando tiempo tomaría resolverlo, hace cuando se introdujo el error, que tipo de error es y la severidad del mismo.
+
+Además tenemos 4 tabs que nos dan más información:
+
+- **Where is this issue?**: Nos muestra la ubicación del error en el código.
+- **Why is this an issue?**: Nos da una descripción del error.
+- **How to fix this issue?**: Nos da una solución al error.
+- **What is the impact of this issue?**: Nos da el impacto del error.
+- **Activity**: Nos muestra la actividad del error.
+- **More Info**: Nos da recursos relacionados al error.
+
+En el siguiente tab de la parte superior, tenemos los `Security Hotspots`:
+
+<p align="center">
+         <img src="./images/sonarqube-security.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+Estos son los puntos de seguridad que podrían ser un problema en el futuro, pero no son un problema en el presente. Tenemos la misma información que en los errores, pero con la diferencia que no es un problema en el presente y podemos actualizar su estado.
+
+El siguiente tab es `Measures`:
+
+<p align="center">
+         <img src="./images/sonarqube-measures.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+Aquí podemos ver las métricas de nuestro proyecto, como la complejidad ciclomatica, la deuda técnica, la cobertura de código, entre otras. Al seleccionar una métrica, podemos ver un gráfico que cambia para cada métrica. En este caso, para la metrica de `Mantenibilidad` podemos ver el siguiente gráfico:
+
+<p align="center">
+         <img src="./images/sonarqube-mantenibilidad.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+Este gráfico muestra las líneas de código por error de mantenibilidad y la deuda técnica o el tiempo que tomaría resolver los errores.
+
+### Demo con SonarCloud
+
+Para usar SonarCloud, el único pre-requisito, es tener instalado el SonarScanner que en teoría ya deberías tenerlo instalado si has seguido los pasos anteriores.
+
+Para configurar un proyecto en SonarCloud, solo debes modificar el archivo `sonar-project.properties` que se encuentra en la raíz de tu proyecto y cambiar la URL de Sonarqube por la de SonarCloud:
+
+```properties
+sonar.projectKey=MiProyecto
+sonar.sources=.
+sonar.host.url=https://sonarcloud.io
+sonar.login=TuToken
+```
+
+Puedes analizar proyectos públicos de GitHub de forma gratuita en SonarCloud. Solo necesitas vincular tu cuenta de GitHub con SonarCloud y seleccionar el repositorio que deseas analizar.
+
+Si deseas hacerlo de forma local también se puede hacer, por eso el pre-requisito de tener instalado SonarScanner.
+
+Para ejecutar el análisis, solo debes ejecutar el comando `sonar-scanner` en la raíz de tu proyecto y los resultados se verán en SonarCloud.
+
+Al ejecutar el análisis, podrás ver los resultados en la interfaz web de SonarCloud, donde se mostrarán las métricas de calidad del código, los problemas detectados y las sugerencias de mejora. Todo similar a lo comentado anteriormente para Sonarqube.
+
+<p align="center">
+         <img src="./images/sonarcloud-project.png" alt="Análisis de Código Estático" width="500"/>
+</p>
+
+La única diferencia, es que puede ver todos los branches y los pull requests que se han hecho en el proyecto. La forma más sencilla de ejecutar el análisis es en un pipeline de CI/CD, donde se ejecuta automáticamente en cada cambio.
+
+### Implementación de SonarCloud en pipelines de CI/CD
+
+Para configurar SonarCloud en un pipeline de CI/CD, solo necesitas agregar un **step** que ejecute el análisis de código estático con SonarScanner. A continuación, se muestra un ejemplo de cómo se puede hacer esto en un pipeline de GitHub Actions:
+
+```yaml
+name: Build
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+```
+
+En este ejemplo, se debe colocar el `SONAR_TOKEN` y el `SONAR_PROJECT_KEY` en los secretos del repositorio de GitHub. Estos valores se pueden obtener desde la configuración del proyecto en SonarCloud.
+
+Finalmente, debemos actualizar nuestro archivo `sonar-project.properties` para que apunte a SonarCloud y con el key de nuestro proyecto en SonarCloud.
+
+```properties
+sonar.projectKey=rodrigop23_credentials-manager
+sonar.organization=rodrigop23
+```
+
+Al realizar estos pasos, el análisis de código estático se ejecutará automáticamente en cada cambio en el repositorio, proporcionando retroalimentación inmediata sobre la calidad del código y los problemas detectados.
+
+Para revisar los logs de ejecución del pipeline, puedes ir a la sección de `Actions` en tu repositorio de GitHub. Ahí podrás ver el resultado de cada ejecución del pipeline, incluyendo el análisis de SonarCloud.
+
+Finalmente, todos los archivos actualizados para esta sección de pipelines de CI/CD con SonarCloud se encuentran en la carpeta [github-actions-integration](./common/github-actions-integration/).
+
+- [Archivo build.yml](./common/github-actions-integration/build.yml)
+- [Archivo sonar-project.properties](./common/github-actions-integration/sonar-project.properties)
+
+## Link del video de la demostración
+
+Adjunto Link de Youtube y Drive, por si no se puede visualizar en uno de los dos.
+
+- [Youtube](https://youtu.be/ESlmZhc9vyU)
+- [Google Drive](https://drive.google.com/file/d/12pP3CIEFR2xj-1JWKez6QwC6G0z9W0os/view?usp=sharing)
 
 ## Bibliografía
 
 - Bardas, A. G. (2010). Static Code Analysis. Journal of Information Systems and Operations Management, 4, 99–107. <https://owasp.org/www-community/controls/Static_Code_Analysis>
 
 - SonarCloud documentation. (s/f). Sonarcloud.Io. Recuperado el 13 de octubre de 2024, de <https://docs.sonarcloud.io/>
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
