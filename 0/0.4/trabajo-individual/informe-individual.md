@@ -14,8 +14,24 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 ## Características y herramientas utilizadas
 
 
+### Herramientas
+**Data Warehouse (DW):**
+- **BigQuery**: Servicio de Data Warehouse en la nube de Google, diseñado para consultas en grandes volúmenes de datos utilizando SQL.
+- **Amazon Redshift**: Ofrecido por AWS, Redshift es un Data Warehouse en la nube que destaca por su capacidad para manejar grandes escalas de datasets, ofreciendo un rendimiento rápido para las consultas.
+- **Snowflake**: Plataforma de Data Warehousing basada en la nube que separa el almacenamiento y computo, permitiendo a los usuarios escalar recursos de forma independiente y pagar por lo que usan, facilitando el manejo de datos sin preocuparse por la gestión de infraestructura.
+
+**Data Lake (DL):**
+- **Azure Data Lake**: Solución de almacenamiento en la nube de Microsoft diseñada para almacenar grandes volúmenes de datos en su forma original, facilitando el análisis de Big Data.
+- **Amazon S3 (Amazon Simple Storage Service)**: Servicio de almacenamiento de objetos de AWS que ofrece escabilidad, seguridad, rendimiento y disponibilidad de datos.
+- **Hadoop**: Framework de software que permite el procesamiento distribuido de grandes datos a través de clusters de computadoras, utilizando simple modelado de datos y almacenamiento a gran escala.
+
+**Data Mesh (DM):**
+- **Kafka**: Plataforma de streaming de eventos distribuida que permite publicar, suscribir, almacenar y procesar flujos de registros en tiempo real, siendo fundamental para la arquitectura de microservicios y procesamiento de eventos.
+- **Confluent**: Plataforma que se construye alrededor de Kafka para mejorar su capacidad, gestionabilidad y seguridad, ofreciendo herramientas para construir y gestionar aplicaciones basadas en flujos de datos en tiempo real.
+
+
 ## Ventajas y desventajas
-**DATA WAREHOUSE**  
+### DATA WAREHOUSE  
 *Ventajas:*
 - **Optimización para Consultas:** Los DW están altamente optimizados para realizar consultas complejas, permitiendo análisis avanzados y respuestas rápidas a preguntas de negocio.
 - **Consistencia de Datos:** Al almacenar datos que ya han sido procesados y estructurados, garantizan una alta consistencia y calidad de los datos.
@@ -30,7 +46,7 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 - **Complejidad:** La configuración y mantenimiento de un DW requieren experiencia técnica.
 - **Escalabilidad:** Aunque han mejorado con soluciones en la nube, la escalabilidad puede ser un desafío.
 
-**DATA LAKE**  
+### DATA LAKE  
 *Ventajas:*
 - **Flexibilidad:** Son capaces de almacenar datos no estructurados, semi-estructurados y estructurados, lo que ofrece una gran adaptabilidad.
 - **Escalabilidad:** Son altamente escalables, especialmente en entornos de nube, permitiendo almacenar grandes cantidades de datos a bajo costo.
@@ -45,7 +61,7 @@ Un Data Mesh (DM) es una arquitectura de datos descentralizada, este enfoque arq
 - **Herramientas Especializadas:** A menudo se requieren herramientas y habilidades especializadas para procesar y analizar datos almacenados en un Data Lake.
 - **Dependencia de Expertos:** Depende en gran medida de especialistas en datos para extraer valor.
 
-**DATA MESH**  
+### DATA MESH  
 *Ventajas:*
 - **Descentralización:** Facilita la descentralización de la gestión de datos, permitiendo que los equipos de cada dominio gestionen sus propios datos.
 - **Agilidad:** Mejora la agilidad al reducir las dependencias centralizadas.
