@@ -159,7 +159,52 @@ Los resultados del análisis realizado por SonarScanner se presentan en informes
 ### 4. **Control de calidad continuo**
 Una vez integrado, SonarScanner puede realizar análisis continuos de la base de código en cada actualización, asegurando que la calidad del software se mantenga o mejore con cada iteración.
 
+## Instalación y uso de sonar scanner
+### Pre-requisitos
+1. Instalar JAVA SE (https://www.oracle.com/java/technologies/downloads) 
+para evitar errores instalar le versión 17
+Para validar la instalación ejecutar en la consola de comandos "java-version"
+Verificar que las variables de entorno de JAVA: "echo %path%"
+ ### 2. Instalación de SonarQube
+Descargar SonarQube desde la página principal: https://www.sonarsource.com/products/sonarqube/downloads/
+### Descomprimir el la carpeta y buscar el archivo StartSonar.bat
+![](sonarstart.png)
+### Abrir el cmd y ejecutar el archivo:
+![](Captura2.png)
+### Ingresar a http://localhost:9000/ para verificar la instalación de SonarQube
+![](Captura3.png)
+#### Usuadio y contraseña "admin", luego les pedirá que cambien su contraseña
+### 3. Habilitación de SonarScanner
+### Decargar y descomprimir SonarScanner https://docs.sonarsource.com/sonarqube/9.7/analyzing-source-code/scanners/sonarscanner/
+![](Captura4.png)
+![](Captura5.png)
 
+### Agregar sonar-scanner como variable de entorno
+1. Copiar la ruta del bin
+2. Abrir las propiedades del Sistema y Seleccionar Variables de entorno
+3. Seleccionar Path
+4. Seleccionar nuevo
+5. Pegar ruta copiada
+6. Aceptar y guardar todo
+
+![](Captura6.png)
+### Habilitar sonar-scanner, con cmd, ingresar a la ruta del bin y ejecutar "sonar-scanner.bat -h"
+
+### Validar que esté habilitado en el sistema "sonar-scanner -h" y "sonar-scanner -v"
+![](Captura7.png)
+
+### Ir a un proyecto el cual quieras ver sus code Smells y agregar la sonar-project.properties en la ruta raiz del proyecto
+![](Captura8.png)
+
+### modificar el archivo según la necesidad del proyecto, recomiendo usar la siguiente configuración
+![](Captura9.png)
+
+### agregar usuario y contraseña del SonarQube, modificar la configuración del conar-scanner
+![](Captura10.png)
+![](Captura11.png)
+
+### Ingresar a la ruta raiz del proyecto y ejecutar "sonar-scanner"
+### Verificar en el portal de sonarQube
 
 # Link del Video
 
