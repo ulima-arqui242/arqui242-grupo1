@@ -1,6 +1,6 @@
 ## Trabajo de Investigación
 
-# Code Smells: Identificación y Refactorización
+# Code Smells
 ![](codeSmells.png)
 ## ¿Qué son los Code Smells?
 
