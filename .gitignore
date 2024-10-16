@@ -130,3 +130,5 @@ dist
 .pnp.*
 # Ignore macOS system file
 .DS_Store
+
+.markdownlint.json
