@@ -13,7 +13,8 @@ Un sidecar no es necesariamente parte de la aplicación, pero esta conectado a e
 ## Casos de aplicación:
  1. Si la aplicación principal utiliza distintos lenguajes y frameworks.
 2. Se puede usar para tener controles de seguridad.
-3. 
+3. Puede implementarse como un caché local para mejorar el rendimiento del servicio principal.
+4. El sidecar se puede utilizar como un proxy que gestiona las conextiones que entran y salen del servicio, permitiendo realizar acciones como el balanceo de carga, control de acceso o encriptación del tráfico.
 
 
 ## Posible aplicación en el trabajo en grupo:
