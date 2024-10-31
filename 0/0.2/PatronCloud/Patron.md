@@ -8,4 +8,9 @@ tener un sistema robusto que sea capaz de manejar gran volumen de solicitudes y 
 reduccion en el rendimiento en la experiencia del usuario, sobretodo 
 cuando se maximiza la capacidad que tiene el sistema de procesar solicitudes.
 ## Solución
-##
+El patrón utiliza una cola de mensajes como intermediario para manejar solicitudes. Esto quiere decir que en lugar de enviar todas las solicitudes directamente al servicio que tiene que procesarlas, lo cual podría sobrecargarlo en momentos de alta demanda, las solicitudes se guardan en una lista de espera o cola. Posteriomente el servicio las va tomando y procesando a su propio ritmo de acuerdo con su capacidad para atender solicitudes en ese momento. Se icluyen los siguientes beneficios como parte de la implementación del patron:
+- Se evita que los servicios de procesamiento se vean saturados en picos de demanda, sino que las solicitudes no se pierden y se procesan de forma organizada, sin importar cuántas lleguen a la vez.
+- Se mejora la robustez del sistema, permitiendo que los consumidores retomen el procesamiento cuando estén listos, sin perder solicitudes.
+- Si en algún instante el servicio se detiene o falla, las solicitudes quedan en la cola y pueden ser atendidas tan pronto como el sistema vuelva a disponibilidad completa.
+
+## Casos de  uso
