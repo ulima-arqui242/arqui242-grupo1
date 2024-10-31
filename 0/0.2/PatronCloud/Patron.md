@@ -13,4 +13,6 @@ El patrón utiliza una cola de mensajes como intermediario para manejar solicitu
 - Se mejora la robustez del sistema, permitiendo que los consumidores retomen el procesamiento cuando estén listos, sin perder solicitudes.
 - Si en algún instante el servicio se detiene o falla, las solicitudes quedan en la cola y pueden ser atendidas tan pronto como el sistema vuelva a disponibilidad completa.
 
-## Casos de  uso
+## Casos de uso
+El patron Queue-Based Load Leveling se puede usar como ejemplo para optimizar las operaciones de las siguientes empresas:
+- 
