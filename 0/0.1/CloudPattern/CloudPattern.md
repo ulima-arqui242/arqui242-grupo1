@@ -73,22 +73,22 @@ El Main Microservice actúa como punto de entrada para las solicitudes de los cl
 Una vez que todos los servicios están en ejecución, se realizan pruebas para verificar la autenticación y la recuperación del perfil. Se utilizan comandos `curl` para simular las solicitudes HTTP, asegurando que el flujo de datos entre los microservicios funcione correctamente.
 
 Iniciar User Service:
-cd user-service
-node index.js
+- cd user-service
+- node index.js
 
 Inicia el Sidecar
-cd sidecar
-node server.js
+- cd sidecar
+- node server.js
 
 iniciar el main-microservice
-cd-microservice
-npm run start
+- cd-microservice
+- npm run start
 
 Ejecutar en el símbolo del sistema
-`curl -X POST http://localhost:3001/user/login -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"password\"}"`
+- `curl -X POST http://localhost:3001/user/login -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"password\"}"`
 
 Luego de recibir el token, realizar la recuperación del perfil
-`curl -X GET http://localhost:3001/user/profile -H "Authorization: Bearer <TOKEN_RECIBIDO>"`
+- `curl -X GET http://localhost:3001/user/profile -H "Authorization: Bearer <TOKEN_RECIBIDO>"`
 
 ## Conclusiones
 
