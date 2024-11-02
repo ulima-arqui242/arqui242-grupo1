@@ -20,3 +20,8 @@ Un sidecar no es necesariamente parte de la aplicación, pero esta conectado a e
 
 ## Posible aplicación en el trabajo en grupo:
 
+Para MedSysPro, la implementación del patrón Sidecar en una arquitectura de microservicios podría ser una solución que permita a los diferentes modulos comunicarse de manera más eficiente, sin que cada microservicio tenga que gestionar directamente las dependencias o funciones secundarias. 
+Algunas formas en que se podría aplicar el patrón Sidecar
+1. Comunicación eficiente entre microservicios: En lugar de depender de conexiones directas y configuraciones específicas en cada módulo, un sidecar podría centralizar y gestionar las comunicaciones, siriviendo como intermediario entre servicios.
+2. Centralización de funciones secundarias: Funciones como el registro de logs, el monitoreo de rendimiento y la autenticación de usuarios pueden aplicarse en el sidecar, eliminando la necesidad de replicarlas en cada microservicio.
+3. Escalabilidad Independiente: Gracias a la separación de funciones, MedSysPro podría escalar servicios específicos sin afectar a toda la aplicación. Por ejemplo, si el módulo de Teleconsulta tiene un aumento en la demanda, el sidecar puede gestionar las solicitudes adicionales sin necesidad de escalar otros módulos de manera directa, lo que reduce los costos y optimiza el uso de recursos.
