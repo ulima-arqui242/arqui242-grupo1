@@ -4,11 +4,11 @@ import logging
 import signal
 import sys
 
-# Setup logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Connect to Redis
+
 redis_client = redis.Redis(host='redis', port=6379)
 
 def signal_handler(sig, frame):
@@ -19,7 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
 def process_appointments():
-    # Check Redis connectivity
+
     try:
         redis_client.ping()
         logger.info("Connected to Redis")
