@@ -35,3 +35,7 @@ El patron Queue-Based Load Leveling se puede usar como ejemplo para optimizar la
 ```
 docker-compose up --build
 ```
+
+### Ambientes
+- Locust: ``http://localhost:8089/ ``
+- Prometheus: `` http://localhost:9090/graph ``
