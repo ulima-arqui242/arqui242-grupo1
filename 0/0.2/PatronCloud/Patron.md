@@ -39,3 +39,9 @@ docker-compose up --build
 ### Ambientes
 - Locust: ``http://localhost:8089/ ``
 - Prometheus: `` http://localhost:9090/graph ``
+
+### Recomendación para las pruebas
+El patron hablado es utilizado comunmente para pruebas de escritura, por lo que las peticiones de POST y DELETE son las más
+apropiadas para  realizar las peruebas, en este caso para las prubas de estres solo se estan realizando peticiones POST.
+
+Link de video de la demo:
