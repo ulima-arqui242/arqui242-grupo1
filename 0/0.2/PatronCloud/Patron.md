@@ -20,3 +20,11 @@ El patron Queue-Based Load Leveling se puede usar como ejemplo para optimizar la
 
 - E-commerce: EN el caso de plataformas de comercio durante eventos de alta demanda como el black friday o cyber monday, es común que haya una gran numero de transacciones y solicitudes de compra paralelamente. Con este patrón cada pedido se coloca en una cola, permitiendo que el sistema gestione cada solicitud sin llegar a la sobrecarga. Así los clientes pueden completar sus compras sin experimentar lentitud o fallas y las transacciones se procesan de manera confiable para la empresa y usuario.
 - Bancos y servicios financieros: Los sistemas bancarios que procesan transacciones, como pagos o transacciones de diferente tipo o cantidad , pueden recibir muchas solicitudes simultáneas todos los dias 24/7. Este patrón asegura que todas las transacciones se guarden en una cola y se procesen en el orden que llegaron, mantiene el sistema estable y evita que colapse. Así los usuarios pueden realizar sus transacciones sin errores o demoras, sabiendo que la disponibilidad de este tipo de sistema es critico para millones de personas.
+
+## Pruebas
+
+### Herramientas
+- Locust
+- redis
+- flask
+- prometheus
