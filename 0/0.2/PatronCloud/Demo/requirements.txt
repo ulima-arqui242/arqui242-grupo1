@@ -1,0 +1,6 @@
+Flask
+redis
+uuid
+prometheus-flask-exporter
+prometheus_client  
+locust
