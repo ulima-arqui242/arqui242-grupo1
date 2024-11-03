@@ -44,4 +44,4 @@ docker-compose up --build
 El patron hablado es utilizado comunmente para pruebas de escritura, por lo que las peticiones de POST y DELETE son las más
 apropiadas para  realizar las peruebas, en este caso para las prubas de estres solo se estan realizando peticiones POST.
 
-Link de video de la demo:
+Link de video de la demo: https://drive.google.com/file/d/19hESGPboTttmz8vAY02j7cF6UkrdTYPB/view?usp=sharing
