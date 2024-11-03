@@ -23,8 +23,15 @@ El patron Queue-Based Load Leveling se puede usar como ejemplo para optimizar la
 
 ## Pruebas
 
-### Herramientas
+### Requerimientos
 - Locust
 - redis
 - flask
 - prometheus
+- Docker
+
+### Ejecución
+
+``
+docker-compose up --build
+``
