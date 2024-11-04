@@ -43,6 +43,6 @@ docker-compose up --build
 ### Recomendación para las pruebas
 El patron hablado es utilizado comunmente para pruebas de escritura, por lo que las peticiones de POST y DELETE son las más
 apropiadas para  realizar las peruebas, en este caso para las prubas de estres solo se estan realizando peticiones POST.
-[Demo](./0.2/PatronCould/Demo)
+[Demo](./0.2/PatronCloud/Demo)
 
 Link de video de la demo: https://drive.google.com/file/d/19hESGPboTttmz8vAY02j7cF6UkrdTYPB/view?usp=sharing
