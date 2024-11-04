@@ -107,6 +107,217 @@ Consideremos un sistema de e-commerce donde un cliente puede realizar un pedido,
 
 Si el pago falla, el sistema debe revertir tanto el ajuste de inventario como la creación del pedido. Aquí es donde entran en juego las transacciones compensatorias: la operación de "cancelar pedido" y "restaurar inventario" serían las operaciones compensatorias a realizar.
 
+## Implementación
+
+En esta sección, se detalla cómo implementar el patrón **Compensating Transaction** utilizando microservicios para manejar las operaciones de **Pedido**, **Inventario** y **Pago**. La implementación garantiza que si ocurre un fallo en algún punto del flujo, se ejecuten operaciones compensatorias para restaurar el estado anterior del sistema y mantener la consistencia de los datos.
+
+## Proceso Perfecto
+
+En un escenario donde todo funciona sin fallos, el flujo de transacciones sigue estos pasos:
+
+1. **Pedido**: El cliente crea un pedido.
+   - El servicio de **Pedido** almacena el pedido y notifica al servicio de **Inventario** para que reduzca el stock.
+2. **Inventario**: El servicio de **Inventario** recibe la solicitud y reduce el inventario de los productos solicitados.
+   - Después de reducir el inventario, el servicio notifica a **Pago** para procesar el pago.
+3. **Pago**: El servicio de **Pago** procesa el pago del pedido.
+   - Si el pago es exitoso, el pedido se completa y el flujo termina satisfactoriamente.
+
+## Proceso con Transacciones Compensatorias
+
+Cuando ocurre un fallo en alguno de los servicios, se aplica el patrón de **Compensating Transaction** para revertir las operaciones previas y evitar inconsistencias en el sistema.
+
+### Escenario 1: Falla en el Servicio de Pago
+
+1. **Pedido**: El cliente realiza un pedido.
+2. **Inventario**: El servicio reduce el inventario.
+3. **Pago**: El servicio de **Pago** falla al procesar el pago.
+
+**Transacción compensatoria**:
+
+- El servicio de **Pago** emite un evento que notifica al servicio de **Inventario** que debe restaurar el stock de los productos.
+- **Inventario** restaura los productos al inventario y notifica al servicio de **Pedido**.
+- **Pedido** cancela el pedido en su base de datos.
+
+### Escenario 2: Falla en el Servicio de Inventario
+
+1. **Pedido**: El cliente realiza un pedido.
+2. **Inventario**: El servicio de **Inventario** falla al intentar reducir el stock.
+
+**Transacción compensatoria**:
+
+- **Inventario** no realiza ninguna operación adicional y emite un evento de fallo.
+- **Pedido** cancela el pedido en su base de datos, eliminando la solicitud del cliente.
+
+### Escenario 3: Falla en el Servicio de Pedido
+
+Si el servicio de **Pedido** falla al intentar crear el pedido, el proceso se detiene inmediatamente y no se ejecutan más operaciones, ya que los otros servicios no han recibido ninguna notificación para proceder.
+
+## Gestión de Fallos y Eventos
+
+Cada servicio está configurado para emitir eventos y reaccionar a ellos usando **NATS** como sistema de mensajería. Si un servicio falla, el evento emitido activa las operaciones compensatorias en los servicios correspondientes:
+
+1. **Pedido**: Si se detecta un fallo en **Inventario** o **Pago**, el servicio cancela el pedido.
+2. **Inventario**: Si se detecta un fallo en el servicio de **Pago**, el servicio restaura el inventario de los productos afectados.
+3. **Pago**: Si el servicio de **Pago** falla, emite eventos a **Pedido** e **Inventario** para que ejecuten las compensaciones necesarias.
+
+Este sistema asegura que, ante cualquier fallo, el sistema pueda volver a un estado consistente, sin dejar datos en un estado incompleto o incorrecto.
+
+### Código de Ejemplo
+
+Link de Repositorio: [Compensating Transaction Example](https://github.com/rodrigop23/compensating-transaction-pattern.git)
+
+## 1. Controlador del Servicio de Pedido
+
+El controlador del servicio de **Pedido** se encarga de manejar las solicitudes HTTP y las suscripciones a eventos enviados mediante **NATS**.
+
+### a. Crear Pedido
+
+<p align="center">
+    <img src="./first.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El método `crearPedido()` en el controlador expone un endpoint **POST** que permite a los clientes crear un nuevo pedido. Recibe un DTO con los datos del pedido y lo pasa al servicio para procesarlo.
+
+### b. Revertir Pedido (Compensación)
+
+El método `revertirCreacionPedido()` utiliza un **MessagePattern** que escucha los eventos emitidos por otros microservicios (a través de **NATS**) bajo el patrón `'pedido.revertir.creacion'`. Cuando el servicio recibe este evento, significa que ha ocurrido un fallo en otro servicio (como **Inventario** o **Pago**) y es necesario revertir la creación del pedido.
+
+### c. Completar Pedido
+
+El método `completarPedido()` también utiliza un **MessagePattern** para escuchar el evento `'pedido.completado'`, el cual indica que todas las operaciones relacionadas con el pedido han sido exitosas. En este caso, se actualiza el estado del pedido a **COMPLETED** en la base de datos.
+
+---
+
+## 2. Servicio de Pedido
+
+<p align="center">
+    <img src="./second.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El servicio de **Pedido** contiene la lógica de negocio que maneja la creación y compensación de pedidos, así como su finalización.
+
+### a. Crear Pedido
+
+El método `crearPedido()` es responsable de crear un nuevo pedido en la base de datos usando **Prisma** como ORM. El proceso incluye los siguientes pasos:
+
+1. **Creación del Pedido**: Se crea un registro en la base de datos que incluye los productos solicitados y el cliente que realizó el pedido.
+2. **Emisión del Evento**: Una vez que el pedido ha sido creado, se emite un evento a **NATS** con el tema `'inventario.reducir'` para que el servicio de **Inventario** reduzca el stock de los productos solicitados.
+3. **Manejo de Errores**: Si ocurre un error durante el proceso (como un fallo en la base de datos o en la comunicación con el servicio de **Inventario**), el pedido se revierte llamando al método `revertirCreacionPedido()`.
+
+<p align="center">
+    <img src="./third.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+### b. Revertir Creación de Pedido (Compensación)
+
+El método `revertirCreacionPedido()` se invoca cuando es necesario deshacer un pedido que ha sido creado. Esto ocurre cuando el servicio de **Inventario** no puede reducir el stock o el servicio de **Pago** no puede procesar el pago.
+
+El proceso consiste en:
+
+1. Marcar el pedido como **eliminado** (`isDeleted: true`) en la base de datos, para que no sea considerado en el sistema.
+2. Este cambio asegura que el pedido no tenga efectos posteriores en el sistema, manteniendo la consistencia de los datos.
+
+### c. Completar Pedido
+
+<p align="center">
+    <img src="./4.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El método `completarPedido()` se utiliza para actualizar el estado del pedido a **COMPLETED** cuando todas las operaciones asociadas (reducción de inventario y pago) han sido exitosas. Este método se invoca tras recibir el evento `'pedido.completado'` de otros microservicios.
+
+## 1. Controlador del Servicio de Inventario
+
+El **InventarioController** se encarga de manejar las solicitudes de actualización de inventario y las operaciones compensatorias en caso de errores. A continuación, se explican los métodos principales:
+
+### a. Reducir Inventario
+
+El método `reducirInventario()` escucha el evento `'inventario.reducir'` a través de **NATS**. Este evento es enviado por el servicio de **Pedido** cuando se ha creado un pedido. El método recibe los datos del pedido y los pasa al servicio de **Inventario** para reducir las cantidades de los productos solicitados.
+
+- **Flujo**:
+  1. Escucha el evento emitido por el servicio de **Pedido**.
+  2. Llama al método `reducirInventario()` del servicio para actualizar el stock de los productos.
+
+### b. Revertir Reducción de Inventario
+
+El método `revertirReduccionInventario()` también escucha eventos a través de **NATS**, específicamente el evento `'inventario.revertir.reduccion'`. Este evento es disparado cuando algo falla en el servicio de **Pago**, indicando que se debe revertir la reducción de inventario que se realizó previamente.
+
+- **Flujo**:
+  1. Escucha el evento que indica que hay que revertir la operación de reducción.
+  2. Llama al método `revertirActualizacionInventario()` del servicio para restaurar el stock.
+
+---
+
+## 2. Servicio de Inventario
+
+<p align="center">
+    <img src="./5.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El **InventarioService** maneja la lógica de negocio relacionada con la reducción y restauración de inventario. Aquí se detallan los métodos más importantes:
+
+### a. Reducir Inventario
+
+El método `reducirInventario()` es responsable de reducir las cantidades de los productos en el inventario cuando se recibe un pedido. A continuación se detallan sus pasos:
+
+- **Flujo**:
+
+  1. **Actualización del Inventario**: Se itera sobre los productos solicitados en el pedido y se reduce la cantidad disponible en la base de datos utilizando Prisma.
+  2. **Validación**: Se comprueba que la cantidad de productos actualizados coincida con los productos solicitados. Si no es así, se lanza un error.
+  3. **Calcular Precio Total**: Se consultan los precios de los productos actualizados para calcular el precio total del pedido.
+  4. **Emisión de Evento a Pago**: Una vez calculado el precio total, se emite un evento `'pago.crear'` para que el servicio de **Pago** procese el cobro del pedido.
+
+- **Manejo de Errores**:
+  - Si ocurre un error en cualquier parte del proceso, se emiten eventos de compensación para revertir la reducción de inventario y se notifica al servicio de **Pedido** para que cancele el pedido.
+
+### b. Revertir Actualización de Inventario (Compensación)
+
+<p align="center">
+    <img src="./6.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El método `revertirActualizacionInventario()` se utiliza cuando ocurre un fallo en el servicio de **Pago** y se necesita restaurar el stock de los productos. Esta es una operación de compensación que asegura que el inventario vuelva a su estado original.
+
+- **Flujo**:
+  1. **Buscar Producto**: Se busca el producto en la base de datos utilizando su nombre.
+  2. **Incrementar Cantidad**: Se incrementa la cantidad del producto en la base de datos, devolviendo el stock a su estado anterior.
+
+## 3. Controlador del Servicio de Pago
+
+<p align="center">
+    <img src="./7.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El controlador del servicio de **Pago** escucha eventos relacionados con la creación de pagos a través de **NATS**. A continuación, se explican sus principales métodos:
+
+### a. Crear Pago
+
+El método `crearPago()` escucha el evento `'pago.crear'`, que es emitido por el servicio de **Inventario** cuando se ha reducido correctamente el stock de los productos del pedido. Este método recibe los detalles del pago, incluidos el **pedidoId** y el **monto**, y los pasa al servicio para que procese el pago.
+
+- **Flujo**:
+  1. Escucha el evento `'pago.crear'` emitido por el servicio de **Inventario**.
+  2. Llama al método `crearPago()` del servicio para procesar y registrar el pago.
+
+---
+
+## 2. Servicio de Pago
+
+<p align="center">
+    <img src="./8.png" alt="Análisis de Código Estático" width="600"/>
+</p>
+
+El **PagoService** contiene la lógica de negocio que maneja el procesamiento de pagos y la emisión de eventos a otros microservicios.
+
+### a. Crear Pago
+
+El método `crearPago()` es el responsable de registrar un pago en la base de datos y notificar al servicio de **Pedido** que el pago ha sido procesado exitosamente. Si el pago no puede completarse, emite eventos de compensación para revertir las operaciones anteriores.
+
+- **Flujo**:
+  1. **Registro del Pago**: Crea un nuevo registro de pago en la base de datos utilizando **Prisma**.
+  2. **Notificación de Pedido Completado**: Si el pago se procesa correctamente, emite un evento `'pedido.completado'` para notificar al servicio de **Pedido** que el pedido puede ser marcado como completado.
+  3. **Manejo de Errores**: Si ocurre un error durante el proceso de pago, se activan las operaciones compensatorias:
+     - **Revertir Reducción de Inventario**: Se emite un evento `'inventario.revertir.reduccion'` para restaurar el stock de los productos en el servicio de **Inventario**.
+     - **Revertir Creación de Pedido**: Se emite un evento `'pedido.revertir.creacion'` para notificar al servicio de **Pedido** que debe cancelar el pedido.
+
 ## Conclusión
 
 El patrón **Compensating Transaction** es una solución eficaz en escenarios donde las transacciones distribuidas ACID no son posibles. A través de la definición de operaciones compensatorias, se asegura que el sistema pueda manejar errores y mantener la consistencia en un entorno distribuido. Este patrón se usa ampliamente en arquitecturas de microservicios y sistemas distribuidos, donde las fallas en los servicios pueden afectar transacciones críticas. En la sección siguiente, se mostrará una implementación práctica del patrón utilizando **NestJS**, **Prisma** y **NATS**, demostrando cómo se orquesta la lógica de compensación en un sistema distribuido real.
