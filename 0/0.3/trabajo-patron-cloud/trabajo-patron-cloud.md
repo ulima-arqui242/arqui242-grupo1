@@ -165,6 +165,7 @@ Este sistema asegura que, ante cualquier fallo, el sistema pueda volver a un est
 ### Código de Ejemplo
 
 Link de Repositorio: [Compensating Transaction Example](https://github.com/rodrigop23/compensating-transaction-pattern.git)
+Video de Demostración: [Compensating Transaction Demo](https://youtu.be/OaNCaLmMthc)
 
 ## 1. Controlador del Servicio de Pedido
 
