@@ -14,5 +14,18 @@ La seguridad de contenedores hace referencia a la implementación de políticas,
 ## Herrmienta a usar: Kyverno
 
 Kyverno es una herramienta de DevSecOps de política declarativa diseñada para Kubernetes. Permite a los equipos definir y validar políticas de seguridad para los recursos de Kubernetes de manera sencilla y explicable.
+### Beneficios de Usar Kyverno
+- Permite implementar seguridad de manera consistente en todos los entornos.
+- Puede manejar políticas a gran escala en clústeres distribuidos.
+- Integra con Kubernetes sin necesidad de lenguajes externos o que sean complejos.
 
+### Flujo de la arquitectura de kyverno
+- inicia con una solicitud API, que pasa por pasos de autenticación, mutación, validación de esquema y admisión.
+- En el núcleo, el Admission Controller aplica las políticas mediante varios controladores. El Webhook Controller intercepta solicitudes, mientras que el Engine procesa la lógica central.
+- Kyverno utiliza configuraciones de webhook, secretos y políticas como entradas. Sus salidas presentan limpieza de recursos, reportes de cumplimiento y actualizaciones procesadas, de esa manera garantiza la conformidad y automatización en la gestión de recursos de Kubernetes.
+
+Diagrama de la arquitectura de Kyverno:
+![Alt text](kyverno-architecture.png)
+
+## DEMO
 
