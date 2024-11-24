@@ -84,8 +84,80 @@ La arquitectura hexagonal no es simplemente un patrón, sino una filosofía para
 
 # DEMO
 
+Esta demo es una implementación de una aplicación de gestión de citas médicas que refleja los principios de la Arquitectura Hexagonal. A través de este diseño, se busca desacoplar la lógica de negocio del sistema de las tecnologías y frameworks utilizados, garantizando flexibilidad, testabilidad y facilidad de mantenimiento.
 
+## Correspondencia de archivos con los conceptos de Arquitectura hexagonal
 
+### 1. Dominio
+- Entidades
+    - cita.entity.ts: Define la entidad Cita
+    - doctor.entity.ts: Define la entidad Doctor
+    - paciente.entity.ts: Define la entidad paciente
+- Casos de Uso
+    - listarCitas-casodeuso.ts
+    - crearCita-casodeuso.ts
+    - listarPacientes-casodeuso.ts
+    - crearPacietnes-casodeuso.ts
+    - listarDoctores-casodeuso.ts
+    - crearDoctores-casodeuso-ts
+### 2. Puertos
+- cita-repository-puerto.ts //interface
+- doctor-repository-puerto.ts //interface
+- paciente-repostory-puerto.ts //interface
+### 3. Adaptadores
+- typeorm-cita.repository.ts
+- typeorm-doctor.repository.ts
+- typeorm-paciente.repository.ts
+- cita-controller.ts
+- doctor-controller.ts
+- paciente-controller.ts
+
+## Tutorial para Probar el Repositorio
+
+### 1. **Requisitos Previos**
+   - Node.js v16 o superior instalado.
+   - Un servidor de base de datos compatible con TypeORM (e.g., PostgreSQL, MySQL, SQLite).
+   - Tener configurado `npm` o `yarn`.
+### 2. **Pasos para Ejecutar**
+1. **Clona el Repositorio**:
+   ```bash
+   git clone https://github.com/Sebastian1335/arquitecturaHexagonal.git
+   cd demo-arq-hexagonal
+
+2. **Instala dependencias**
+    ```bash
+    npm install
+3. **Inicia la aplicación**
+    ```bash
+    npm start dev
+4. **Prueba los endpoints**
+Usando Thunder Client o similares prueba usar los metodos POST para la creación de entidades
+    ```bash
+    //Para doctor
+    {
+        "id": "1",
+        "nombre": "Dr Pepe",
+        "especialidad": "Cardiologia"
+        }
+    //Para paciente
+    {
+        "id": "1",
+        "nombre": "Juan",
+        "apellido": "Perez",
+        "email": "2020@xd.com"
+        }
+    //Para cita
+    {
+        "id": 1,
+        "pacienteId": 1,
+        "doctorId": 1,
+        "date": "2024-10-29T13:30:00"
+        }
+Y para ver las entidades solo usa estos links en tu navegador preferido
+
+    http://localhost:3000/pacientes
+    http://localhost:3000/doctores
+    http://localhost:3000/citas
 
 ## Repositorio
 ### https://github.com/Sebastian1335/arquitecturaHexagonal.git
