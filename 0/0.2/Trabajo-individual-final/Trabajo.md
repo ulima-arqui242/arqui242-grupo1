@@ -29,3 +29,7 @@ Diagrama de la arquitectura de Kyverno:
 
 ## DEMO
 
+### Requerimientos
+- Kubernetes cluster
+- kubectl
+- Kyverno
