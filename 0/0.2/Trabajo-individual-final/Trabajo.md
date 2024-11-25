@@ -31,5 +31,19 @@ Diagrama de la arquitectura de Kyverno:
 
 ### Requerimientos
 - Kubernetes cluster
+- minikube
 - kubectl
 - Kyverno
+
+### Comandos
+- minikube start **(iniciar minikube)**
+- kubectl cluster-info **(revisar cluster)**
+- kubectl create -f https://github.com/kyverno/kyverno/releases/latest/download/install.yaml **(instalar kyverno)**
+- kubectl get pods -n kyverno **(ver que kyverno esta activo)**
+- kubectl apply -f require-labels.yaml **(crear politica)**
+- kubectl apply -f test-pod.yaml **(crear pod para testear politica)**
+
+### Archivos
+- YAML de kyverno para crear politicas
+- YAML de creación de pod que no usa las politicas definidas
+- YAML de creación de pod que si usa las politicas definidas
