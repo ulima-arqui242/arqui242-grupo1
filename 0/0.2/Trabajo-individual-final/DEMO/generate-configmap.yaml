@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-configmap
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-default-configmap
+      match:
+        resources:
+          kinds:
+            - Namespace
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: default-config
+        namespace: "{{request.object.metadata.name}}"
+        data:
+          configKey: "defaultValue"

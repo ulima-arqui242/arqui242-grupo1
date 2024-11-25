@@ -1,0 +1,18 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-source
+spec:
+  validationFailureAction: enforce
+  rules:
+    - name: check-image-registry
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Solo se permiten imágenes de docker.io."
+        pattern:
+          spec:
+            containers:
+              - image: "docker.io/*"
