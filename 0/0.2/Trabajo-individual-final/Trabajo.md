@@ -47,3 +47,14 @@ Diagrama de la arquitectura de Kyverno:
 - YAML de kyverno para crear politicas
 - YAML de creación de pod que no usa las politicas definidas
 - YAML de creación de pod que si usa las politicas definidas
+
+### Recomendaciones
+- Definir estándares de organización: Antes de implementar Kyverno, acordar políticas comunes con todos los equipos involucrados
+- Estandar de Configuraciones: Establecer políticas para asegurar que los recursos de Kubernetes (pods, namespaces, etc.) cumplan con configuraciones.
+- Crear políticas a la necesidad: Desarrollar políticas que se adapten al nivel de madurez del equipo
+- Pruebas en Entornos de dev: Validar las políticas en entornos de prueba para evitar errores que puedan afectar producción.
+- Reglas de exclusión: Configurar excepciones para evitar conflictos con componentes críticos del clúster
+
+
+
+  ### Link : https://drive.google.com/file/d/1P4fudT36PtWpykhipjHsoWSAKPxSF_ir/view?usp=sharing
