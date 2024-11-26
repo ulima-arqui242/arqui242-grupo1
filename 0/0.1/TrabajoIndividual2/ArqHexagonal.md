@@ -162,4 +162,4 @@ Y para ver las entidades solo usa estos links en tu navegador preferido
 ## Repositorio
 ### https://github.com/Sebastian1335/arquitecturaHexagonal.git
 ## Video
-### Link video
+### https://youtu.be/KfTv2FAr9Q4
