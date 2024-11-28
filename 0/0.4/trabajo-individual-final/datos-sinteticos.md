@@ -1,8 +1,8 @@
-## Generación de datos sintéticos para pruebas
+# Generación de datos sintéticos para pruebas
 
 En entornos de desarrollo es necesario trabajar con altos volumenes de datos para analizar el rendimiento y funcionalidad del sistema. Sin embargo, utilizar datos reales puede presentar desafíos importantes, como problemas de privacidad y limitaciones en su disponibilidad. Para superar estas dificultades se utilizan herramientas como Faker, que genera datos sintéticos, y Locust, que se emplea para realizar pruebas de carga. Estas herramientas permiten simular escenarios realistas sin poner en riesgo información sensible.
 
-### Faker
+## Faker
 Faker es una biblioteca de Python que permite generar datos ficticios de manera flexible y personalizable. Su principal utilidad es proporcionar datos realistas para pruebas de software y desarrollo, sin comprometer la privacidad ni depender de datos reales. Faker es capaz de generar datos aleatorios de diferentes tipos, como nombres, direcciones, correos electrónicos, números de teléfono, textos, fechas, números de tarjetas de crédito, entre otros. Sus ventajas incluyen:
 - **Facilidad de uso:** Unas pocas líneas de código son suficientes para generar datos variados.
 - **Extensible:** Puedes crear tus propios "providers" personalizados.
@@ -16,7 +16,7 @@ Al decir que Faker es extensible me refiero al uso de "Providers", estos son mó
 - **Texto genérico:** word, sentence, paragraph.
 - **Fechas y horas:** date, time, date_time.
 
-### Locust
+## Locust
 Locust es una herramienta de código abierto para realizar pruebas de carga y rendimiento. Permite definir el comportamiento de los usuarios mediante código Python, lo que facilita la creación de escenarios de prueba complejos. Algunas ventajas de Locust incluyen:
 - **Escalabilidad:** Puede simular millones de usuarios simultáneos distribuidos en múltiples máquinas.
 - **Flexibilidad:** Al estar basado en Python, es altamente configurable y extensible.
