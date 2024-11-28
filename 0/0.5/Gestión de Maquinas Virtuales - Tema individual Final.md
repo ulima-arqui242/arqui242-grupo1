@@ -10,6 +10,9 @@ Para esto usare VirtualBox, que es una plataforma de virtualización de código 
 Como se mencionó en la introudcción, las máquinas virtuales son entornos completamente funcionales que emulan una computadora física, pero se ejecutan sobre un sistema operativo anfitrión. Tienen sus propios recursos virtualizados, lo que vendría a ser el CPU, RAM, almacenamiento, etc. Que son manejadas por un hipervisor, el cual es como una capa de software que se encarga de gestionar estos recursos al momentos de asignarlos a la maquina virtual.
 
 #### **Componentes de una Máquina Virtual:**
+
+A continuación se mencionarán los componentes de una Vm acorde a la pagina oficial y documentación proporcionada por VirtualBox.
+
 1. **CPU Virtualizada:** La máquina virtual se ejecuta sobre la CPU del host, pero se comporta como si tuviera su propio procesador.
 2. **Memoria RAM:** La VM utiliza una cantidad específica de RAM que se asigna de forma estática o dinámica desde el sistema host.
 3. **Almacenamiento Virtual:** El disco duro virtual de la máquina contiene el sistema operativo y las aplicaciones que ejecuta la VM. Este disco puede tener un tamaño dinámico, aumentando según las necesidades.
@@ -19,27 +22,26 @@ Como se mencionó en la introudcción, las máquinas virtuales son entornos comp
 ---
 
 ### **Ventajas de las Máquinas Virtuales**
-Las máquinas virtuales tienen muchas ventajas, tanto para usuarios individuales como para empresas que buscan optimizar su infraestructura de TI.
+Las ventajas son tanto para un usuario como para una empresa que quiera optimizar sus procesos o infraestructura de ti.
 
 1. **Aislamiento y Seguridad:**
-   - Las máquinas virtuales están completamente aisladas entre sí, lo que significa que si una máquina virtual se ve comprometida por malware o falla debido a un error, el resto del sistema host o las otras VMs no se ven afectadas.
-   - Esto también permite realizar pruebas de software o configuraciones peligrosas sin poner en riesgo el sistema principal.
+   - Las máquinas virtuales están completamente aisladas entre sí, lo que significa que si una máquina virtual se ve comprometida por malware o tiene un error, entonces las otras vm no se ven afectadas ni la fisica, sino solo la vm comprometida, la cual podría ser restaurada mediante un snapshot posiblemente o eliminarla.
+   - Esto también permite realizar pruebas de software o configuraciones peligrosas sin poner en riesgo el sistema principal que es nuestra Pc en el caso actual.
 
 2. **Pruebas y Desarrollo:**
-   - Las VM permiten realizar pruebas de software en diferentes sistemas operativos (Windows, Linux, macOS, etc.) sin necesidad de tener múltiples dispositivos físicos.
+   - Las VM permiten realizar pruebas de software en diferentes sistemas operativos (Ya sea: Windows, Linux, macOS, etc.) sin necesidad de tener múltiples dispositivos físicos. Como se verá en la demo.
    - Es ideal para desarrolladores que necesitan simular diferentes configuraciones de sistemas o redes.
-   - Además, se pueden crear múltiples VMs para simular redes o configuraciones complejas de servidor.
 
 3. **Consolidación de Recursos:**
-   - Una máquina virtual permite ejecutar múltiples sistemas operativos en una sola máquina física, lo que optimiza el uso del hardware.
-   - Las organizaciones pueden reducir el número de servidores físicos que necesitan al virtualizar muchos de sus servicios.
+   - Como se mencionó previamente, la máquina virtual permite ejecutar múltiples sistemas operativos en una sola máquina física, lo que optimiza el uso del hardware.
+   - Las organizaciones pueden reducir el número de servidores físicos que necesitan al virtualizar muchos de sus servicios, lo cual a la vez ahorra espacio físico y también consumo energético.
 
 4. **Escalabilidad y Flexibilidad:**
-   - Las máquinas virtuales pueden ser fácilmente modificadas en cuanto a la cantidad de CPU, RAM o almacenamiento, lo que permite adaptarse a las necesidades cambiantes de la carga de trabajo.
-   - Las VM se pueden clonar, respaldar o migrar con facilidad, lo que facilita la administración de infraestructura.
+   - Estas maquinas son fácilmente modificadas en cuanto a la cantidad de CPU, RAM o almacenamiento. Todo depende de lo que queremos usar y esto se puede configurar directamente previo a la creación de una.
+   - También se pueden clonar, respaldar o migrar con facilidad, lo cual es util para administrar la infraestructura.
 
 5. **Compatibilidad de Software:**
-   - VirtualBox, por ejemplo, permite ejecutar sistemas operativos antiguos o no compatibles con el hardware físico actual, lo que puede ser útil para software legacy o para aplicaciones que requieren un entorno específico.
+   - VirtualBox, por ejemplo, permite ejecutar sistemas operativos antiguos o no compatibles con el hardware físico actual, lo que puede ser útil para software legacy o para aplicaciones que requieren un entorno específico. Como se verá en mi demo donde tengo windows 10 pero ejecutaré windows 11 que no es compatible con mi dispositivo.
 
 ---
 
@@ -70,11 +72,14 @@ Ahora que hemos entendido los beneficios y limitaciones de las máquinas virtual
 #### **Paso 1: Descargar VirtualBox**
 1. Dirígete a la página oficial de VirtualBox en [https://www.virtualbox.org/](https://www.virtualbox.org/).
 2. Descarga la versión adecuada para tu sistema operativo (Windows, Linux o macOS) y sigue las instrucciones para la instalación.
+   ![image](https://github.com/user-attachments/assets/aa1cd2da-5246-44dd-86ea-787e109021f3)
 
 #### **Paso 2: Obtener la ISO de Windows 11**
 La imagen ISO de Windows 11 es un archivo que contiene todos los archivos necesarios para instalar el sistema operativo. Para obtener la ISO de Windows 11:
 1. Ve a [https://www.microsoft.com/es-es/software-download/windows11](https://www.microsoft.com/es-es/software-download/windows11).
 2. Descarga la ISO de Windows 11 desde la opción de "Descargar ahora" o utiliza la herramienta de creación de medios de Microsoft.
+   ![image](https://github.com/user-attachments/assets/ee99f032-b7eb-47f9-9336-70821d83251a)
+
 
 #### **Paso 3: Crear la Máquina Virtual en VirtualBox**
 1. **Inicia VirtualBox** y haz clic en **"Nuevo"**.
@@ -82,21 +87,31 @@ La imagen ISO de Windows 11 es un archivo que contiene todos los archivos necesa
 3. En **Tipo**, selecciona **Microsoft Windows** y en **Versión**, elige **Windows 11 (64-bit)**.
 4. En la siguiente ventana, asigna **4 GB de RAM** (recomendable para Windows 11).
 5. Crea un **disco duro virtual** de al menos **50 GB** en formato VDI (VirtualBox Disk Image). Elige un tamaño **dinámico** para permitir que el disco crezca a medida que se necesite espacio.
+![image](https://github.com/user-attachments/assets/8c586032-1f86-45fa-8628-8e85b81a8d46)
+![image](https://github.com/user-attachments/assets/2bbc92e3-0132-4901-97c9-55765cd03ff0)
+![image](https://github.com/user-attachments/assets/e00c9471-381c-4886-90c3-4c8be3696c8c)
 
 #### **Paso 4: Configurar la Máquina Virtual**
 1. Una vez creada la VM, haz clic en **"Configuración"**.
 2. En la pestaña **"Almacenamiento"**, selecciona el ícono de CD junto a "Vacío" y luego **"Seleccionar archivo de disco"**.
 3. Busca la ISO de Windows 11 que descargaste y selecciona el archivo.
 4. Configura los adaptadores de red si es necesario para que la VM tenga acceso a Internet.
+![image](https://github.com/user-attachments/assets/971c2afe-6fcd-40f4-bda7-77679882b49e)
+
 
 #### **Paso 5: Iniciar la Instalación de Windows 11**
 1. Haz clic en **"Iniciar"** para arrancar la máquina virtual.
 2. El proceso de instalación de Windows 11 comenzará. Selecciona el idioma, la región y sigue las instrucciones.
 3. Si se te solicita, puedes omitir la clave de producto o ingresar una clave válida de Windows 11.
+![image](https://github.com/user-attachments/assets/a6c7c179-ef3b-4975-afdd-d0d67c517a3f)
 
 #### **Paso 6: Configuración y Finalización**
-1. Durante la instalación, la máquina virtual se reiniciará varias veces.
+1. Durante la instalación, la máquina virtual se reiniciará varias veces y puede demorar en total más de una hora, como fue en mi caso.
 2. Después de completar la instalación, configura las opciones iniciales de Windows 11, como la creación de una cuenta de usuario y la configuración de la red.
+
+#### **Paso 7: Maquina Virtual lista para usar**
+
+
 
 ---
 
