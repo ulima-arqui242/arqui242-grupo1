@@ -116,7 +116,7 @@ Los Headless CMS representan una evolución significativa en la gestión de cont
 
 A continuación, se presenta un video que demuestra la instalación, configuración y uso de Strapi en un proyecto real.
 
-[Enlace al video](#)
+[Enlace al video](https://youtu.be/RjwaoqQ8_4k)
 
 ## Recursos
 
