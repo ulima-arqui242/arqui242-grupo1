@@ -135,6 +135,9 @@ La imagen ISO de Windows 11 es un archivo que contiene todos los archivos necesa
 
 ---
 
+### **Demo del proceso de la VM con la Iso Win11**
+https://youtu.be/cOtHlQC1XQo
+
 ### **Conclusión**
 
 Las **máquinas virtuales** representan una herramienta poderosa y versátil que ofrece muchos beneficios, como el aislamiento, la optimización de recursos y la flexibilidad para ejecutar diferentes sistemas operativos en una sola máquina física. **VirtualBox**, en particular, es una opción accesible y eficiente para usuarios que buscan una solución gratuita para virtualizar sus entornos. Si bien las máquinas virtuales tienen algunas limitaciones de rendimiento, su capacidad para ejecutar múltiples sistemas operativos simultáneamente las convierte en una herramienta invaluable para el desarrollo, pruebas y administración de sistemas.
