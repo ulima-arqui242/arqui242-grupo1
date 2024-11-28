@@ -27,5 +27,5 @@ Esta herramienta es ideal para evaluar cómo un sistema maneja cargas concurrent
 ### Demo
 Como parte de una demostración, he creado tres tablas utilizando SQLite en Python y desarrollado dos escenarios diferentes. En el primer escenario, utilicé Faker para generar la información necesaria y poblar únicamente las tablas creadas. En el segundo escenario, generé datos de manera masiva, simulando una gran cantidad de información con Locust, que a la par permite visualizar en tiempo real los ... ERRORES, TIMEOUTS????
 
-Video: 
+Video: https://drive.google.com/file/d/1MaooAxrmUK2WzUtAujOn7fr0QAJc2qrf/view?usp=sharing
 
