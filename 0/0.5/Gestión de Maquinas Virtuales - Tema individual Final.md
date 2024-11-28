@@ -87,6 +87,8 @@ La imagen ISO de Windows 11 es un archivo que contiene todos los archivos necesa
 3. En **Tipo**, selecciona **Microsoft Windows** y en **Versión**, elige **Windows 11 (64-bit)**.
 4. En la siguiente ventana, asigna **4 GB de RAM** (recomendable para Windows 11).
 5. Crea un **disco duro virtual** de al menos **50 GB** en formato VDI (VirtualBox Disk Image). Elige un tamaño **dinámico** para permitir que el disco crezca a medida que se necesite espacio.
+
+
 ![image](https://github.com/user-attachments/assets/8c586032-1f86-45fa-8628-8e85b81a8d46)
 ![image](https://github.com/user-attachments/assets/2bbc92e3-0132-4901-97c9-55765cd03ff0)
 ![image](https://github.com/user-attachments/assets/e00c9471-381c-4886-90c3-4c8be3696c8c)
