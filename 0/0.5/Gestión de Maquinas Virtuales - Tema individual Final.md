@@ -3,6 +3,8 @@ La virtualización es importante en cuanto a la optimización de recursos, la ge
 
 Para esto usare VirtualBox, que es una plataforma de virtualización de código abierto y gratis de usar que nos permite crear y gestionar diversas maquinas virtuales. En este informe, se detallará el proceso de creación de una máquina virtual utilizando VirtualBox, la instalación de **Windows 11** en una máquina virtual, y se veran diversos aspectos, como las ventajas y desventajas de las máquinas virtuales, comparaciones con otros métodos de virtualización.
 
+![image](https://github.com/user-attachments/assets/b2721bdb-3f88-4adb-ba49-6634ca4dd839)
+
 ---
 
 ### **¿Qué son las Máquinas Virtuales?**
@@ -18,6 +20,8 @@ A continuación se mencionarán los componentes de una Vm acorde a la pagina ofi
 3. **Almacenamiento Virtual:** El disco duro virtual de la máquina contiene el sistema operativo y las aplicaciones que ejecuta la VM. Este disco puede tener un tamaño dinámico, aumentando según las necesidades.
 4. **Adaptadores de Red Virtuales:** Permiten que la máquina virtual se conecte a redes internas o externas, dependiendo de la configuración.
 5. **Controladores Virtuales:** Controlan dispositivos virtualizados como monitores, impresoras o adaptadores USB, entre otros.
+
+![image](https://github.com/user-attachments/assets/63c07f72-43f0-400b-b577-9b4898459ee2)
 
 ---
 
@@ -43,6 +47,8 @@ Las ventajas son tanto para un usuario como para una empresa que quiera optimiza
 5. **Compatibilidad de Software:**
    - VirtualBox, por ejemplo, permite ejecutar sistemas operativos antiguos o no compatibles con el hardware físico actual, lo que puede ser útil para software legacy o para aplicaciones que requieren un entorno específico. Como se verá en mi demo donde tengo windows 10 pero ejecutaré windows 11 que no es compatible con mi dispositivo.
 
+![image](https://github.com/user-attachments/assets/d5d08e49-10f4-463a-bdc4-e61f1a71800a)
+
 ---
 
 ### **Desventajas de las Máquinas Virtuales**
@@ -62,6 +68,8 @@ A pesar de sus muchas ventajas, las máquinas virtuales también presentan ciert
 
 4. **Dependencia de un Hipervisor:**
    - La estabilidad de la máquina virtual depende completamente del hipervisor (como VirtualBox, VMware, Hyper-V, etc.). Si el hipervisor presenta problemas, todas las VMs pueden verse afectadas.
+
+![image](https://github.com/user-attachments/assets/2b29de08-8c3c-4050-989e-88f5c37916d3)
 
 ---
 
